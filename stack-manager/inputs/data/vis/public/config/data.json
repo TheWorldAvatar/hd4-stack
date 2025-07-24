@@ -2,66 +2,6 @@
     "name": "All Data",
     "groups": [
         {
-            "name": "Postcode",
-            "expanded": false,
-            "stack": "http://localhost:3838/exposure-feature-info-agent",
-            "sources": [
-                {
-                    "id": "postcode-source",
-                    "type": "vector",
-                    "tiles": [
-                        "http://localhost:3838/geoserver/twa/wms?service=WMS&version=1.1.0&request=GetMap&layers=twa:sgpostcode&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=application/vnd.mapbox-vector-tile"
-                    ]
-                }
-            ],
-            "layers": [
-                {
-                    "id": "postcode-layer",
-                    "name": "Postcodes",
-                    "source": "postcode-source",
-                    "source-layer": "sgpostcode",
-                    "type": "circle",
-                    "layout": {
-                        "visibility": "none"
-                    },
-                    "paint": {
-                        "circle-radius": 5,
-                        "circle-opacity": 0.8
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Trajectory",
-            "expanded": false,
-            "stack": "http://localhost:3838",
-            "sources": [
-                {
-                    "id": "trajectory-source",
-                    "type": "vector",
-                    "tiles": [
-                        "http://localhost:3838/geoserver/twa/wms?service=WMS&version=1.1.0&request=GetMap&layers=twa:botanic_trajectory&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=application/vnd.mapbox-vector-tile"
-                    ]
-                }
-            ],
-            "layers": [
-                {
-                    "id": "trajectory-layer",
-                    "name": "Trajectory",
-                    "source": "trajectory-source",
-                    "source-layer": "botanic_trajectory",
-                    "type": "line",
-                    "layout": {
-                        "visibility": "none"
-                    },
-                    "paint": {
-                        "line-color": "#000000",
-                        "line-width": 3
-                    }
-                }
-            ]
-        },
-        {
             "name": "Greenspace",
             "expanded": false,
             "sources": [
@@ -164,6 +104,66 @@
                             "fill"
                         ],
                         "fill-opacity": 0.5
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Postcode",
+            "expanded": false,
+            "stack": "http://localhost:3838/exposure-feature-info-agent",
+            "sources": [
+                {
+                    "id": "postcode-source",
+                    "type": "vector",
+                    "tiles": [
+                        "http://localhost:3838/geoserver/twa/wms?service=WMS&version=1.1.0&request=GetMap&layers=twa:sgpostcode&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=application/vnd.mapbox-vector-tile"
+                    ]
+                }
+            ],
+            "layers": [
+                {
+                    "id": "postcode-layer",
+                    "name": "Postcodes",
+                    "source": "postcode-source",
+                    "source-layer": "sgpostcode",
+                    "type": "circle",
+                    "layout": {
+                        "visibility": "none"
+                    },
+                    "paint": {
+                        "circle-radius": 5,
+                        "circle-opacity": 0.8
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Trajectory",
+            "expanded": false,
+            "stack": "http://localhost:3838/exposure-feature-info-agent/trajectory",
+            "sources": [
+                {
+                    "id": "trajectory-source",
+                    "type": "vector",
+                    "tiles": [
+                        "http://localhost:3838/geoserver/twa/wms?service=WMS&version=1.1.0&request=GetMap&layers=twa:botanic_trajectory&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=application/vnd.mapbox-vector-tile"
+                    ]
+                }
+            ],
+            "layers": [
+                {
+                    "id": "trajectory-layer",
+                    "name": "Trajectory",
+                    "source": "trajectory-source",
+                    "source-layer": "botanic_trajectory",
+                    "type": "line",
+                    "layout": {
+                        "visibility": "none"
+                    },
+                    "paint": {
+                        "line-color": "#000000",
+                        "line-width": 3
                     }
                 }
             ]
