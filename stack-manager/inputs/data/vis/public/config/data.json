@@ -3,7 +3,7 @@
     "groups": [
         {
             "name": "Greenspace",
-            "expanded": false,
+            "expanded": true,
             "sources": [
                 {
                     "id": "park-polygon-source",
@@ -74,7 +74,7 @@
         },
         {
             "name": "NDVI",
-            "expanded": false,
+            "expanded": true,
             "sources": [
                 {
                     "id": "ndvi-source",
@@ -110,7 +110,7 @@
         },
         {
             "name": "Postcode",
-            "expanded": false,
+            "expanded": true,
             "stack": "http://localhost:3838/exposure-feature-info-agent",
             "sources": [
                 {
@@ -140,7 +140,7 @@
         },
         {
             "name": "Trajectory",
-            "expanded": false,
+            "expanded": true,
             "stack": "http://localhost:3838/exposure-feature-info-agent/trajectory",
             "sources": [
                 {
@@ -154,7 +154,7 @@
             "layers": [
                 {
                     "id": "trajectory-layer",
-                    "name": "Trajectory",
+                    "name": "Botanic garden",
                     "source": "trajectory-source",
                     "source-layer": "botanic_trajectory",
                     "type": "line",
