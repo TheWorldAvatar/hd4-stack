@@ -68,3 +68,23 @@ BEGIN
 
     RETURN QUERY EXECUTE query;
 END $$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION get_trip_timeseries(
+    data_iri TEXT
+)
+RETURNS TABLE (
+    "time" bigint,
+    "trip" int
+) AS $$
+DECLARE
+    query TEXT := '';
+BEGIN
+    query := format(
+        'SELECT time, %I AS trip FROM %I WHERE time_series_iri=%L',
+        get_column_name(data_iri),
+        get_table_name(data_iri),
+        get_time_series(data_iri)
+    );
+
+    RETURN QUERY EXECUTE query;
+END $$ LANGUAGE plpgsql;

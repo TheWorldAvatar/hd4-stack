@@ -47,3 +47,61 @@ If visualisation of NDVI is desired, be sure to generate the necessary file in [
 cd stack-data-uploader
 ./stack.sh start hd4
 ```
+
+## HTTPS setup
+
+Instructions are adapted from <https://mindsers.blog/en/post/https-using-nginx-certbot-docker/>. The committed files [https/](https/) show the final states, it is necessary to make modifications to the files at least during the initial setup.
+
+1) [https\nginx\conf\default.conf](https\nginx\conf\default.conf) should only contain the following portion
+
+    ```text
+    server {
+        listen 80;
+        listen [::]:80;
+
+        server_name hd4.theworldavatar.io;
+        server_tokens off;
+
+        location /.well-known/acme-challenge/ {
+            root /var/www/certbot;
+        }
+
+        location / {
+            return 301 https://hd4.theworldavatar.io$request_uri;
+        }
+    }
+    ```
+
+    Spin up nginx, i.e.
+
+    ```bash
+    cd https
+    docker compose up -d
+    ```
+
+    Make sure the domain name (e.g. hd4.theworldavatar.io) is mapped to the IP address of the machine, also note that certbot must be able to contact the IP address at port 80 while creating the certificate.
+
+2) Execute the following (dry run)
+
+    ```bash
+    docker compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ --dry-run -d hd4.theworldavatar.io
+    ```
+
+3) If successful, rerun certbot without --dry-run
+
+    ```bash
+    docker compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ -d hd4.theworldavatar.io
+    ```
+
+4) Revert changes [https\nginx\conf\default.conf](https\nginx\conf\default.conf)
+5) Restart nginx
+
+    ```bash
+    docker compose restart
+    ```
+
+6) Setup should be complete at this stage, the certificate needs to be renewed manually every three months with the following command
+
+    ```bash
+    docker compose run --rm certbot renew
+    ```
