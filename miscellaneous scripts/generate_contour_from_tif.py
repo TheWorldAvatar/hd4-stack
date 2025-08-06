@@ -7,6 +7,9 @@ import sys
 
 
 def main():
+    """
+    This script reads in a TIF file and  converts it into polygons
+    """
     x_list = []
     y_list = []
     value_list = []
@@ -44,10 +47,15 @@ def main():
             x_matrix[i, j] = x_cell[i]
             y_matrix[i, j] = y_cell[j]
 
-    result_matrix = np.zeros((len(x_cell), len(y_cell)))
+    result_total_matrix = np.zeros((len(x_cell), len(y_cell)))
+    result_len_matrix = np.zeros((len(x_cell), len(y_cell)))
 
     for i in range(len(x_list)):
-        result_matrix[x_index[i], y_index[i]] = value_list[i]
+        result_total_matrix[x_index[i], y_index[i]] += value_list[i]
+        result_len_matrix[x_index[i], y_index[i]] += 1
+
+    result_len_matrix[result_len_matrix == 0] = 1  # replace zeros with ones
+    result_matrix = result_total_matrix / result_len_matrix  # average
 
     contour_level = 30
     _, ax = plt.subplots()
