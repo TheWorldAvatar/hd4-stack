@@ -93,7 +93,8 @@ Instructions are adapted from <https://mindsers.blog/en/post/https-using-nginx-c
     docker compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ -d hd4.theworldavatar.io
     ```
 
-4) Revert changes [https\nginx\conf\default.conf](https\nginx\conf\default.conf)
+4) Revert changes [https\nginx\conf\default.conf](https\nginx\conf\default.conf), make sure IP address for the stack is correct, also note that only GET requests are allowed to visualisation, exposure-feature-info-agent, and geoserver. If access is needed for other routes, please make the necessary changes.
+
 5) Restart nginx
 
     ```bash
