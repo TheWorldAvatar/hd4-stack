@@ -4,7 +4,7 @@ Configuration for stack hosting HD4 related data
 
 ## Contour generation
 
-A script is provided to generate a GeoJSON contour of a tif file for visualisation. The GeoJSON file can be copied into [](/stack-data-uploader/inputs/data/ndvi/raw_contour/) for upload.
+A script is provided to generate a GeoJSON contour of a tif file for visualisation. The GeoJSON file can be copied into [/stack-data-uploader/inputs/data/ndvi/raw_contour/](/stack-data-uploader/inputs/data/ndvi/raw_contour/) for upload.
 
 To use the script:
 
@@ -101,7 +101,7 @@ Instructions are adapted from <https://mindsers.blog/en/post/https-using-nginx-c
     docker compose restart
     ```
 
-6) Setup should be complete at this stage, the certificate needs to be renewed manually every three months with the following command
+6) Setup should be complete at this stage, the certificate needs to be renewed manually every three months with the following command.
 
     ```bash
     docker compose run --rm certbot renew
