@@ -1,4 +1,4 @@
-# hd4-stack
+# HD4 stack
 
 Configuration for stack hosting HD4 related data
 
@@ -6,7 +6,7 @@ Configuration for stack hosting HD4 related data
 
 A script is provided to generate a GeoJSON contour of a tif file for visualisation. The GeoJSON file can be copied into [/stack-data-uploader/inputs/data/ndvi/raw_contour/](/stack-data-uploader/inputs/data/ndvi/raw_contour/) for upload.
 
-To use the script:
+To use the script (be sure to replace command with file name):
 
 ```bash
 cd miscellaneous\ scripts/
@@ -21,9 +21,13 @@ The GeoServer layer has to be generated manually at the moment, the necessary SQ
 
 ## Setting up visualisation
 
-Populate [stack-manager\inputs\data\vis\public\images](stack-manager\inputs\data\vis\public\images) and [stack-manager\inputs\data\vis\public\optional-pages](stack-manager\inputs\data\vis\public\optional-pages) with files from <https://github.com/TheWorldAvatar/viz/tree/main/code/public>.
+1) Populate [stack-manager\inputs\data\vis\public\images](stack-manager\inputs\data\vis\public\images) and [stack-manager\inputs\data\vis\public\optional-pages](stack-manager\inputs\data\vis\public\optional-pages) with files from <https://github.com/TheWorldAvatar/viz/tree/main/code/public>.
+
+2) Modify URLs of GeoServer layers in [stack-manager\inputs\data\vis\public\config\data.json](stack-manager\inputs\data\vis\public\config\data.json) depending on deployment settings.
 
 ## Spin up the stack
+
+Recommended stack name - `hd4`. If a different stack name is desired, changes are required to the config files.
 
 ```bash
 cd stack-manager
@@ -93,7 +97,15 @@ Instructions are adapted from <https://mindsers.blog/en/post/https-using-nginx-c
     docker compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ -d hd4.theworldavatar.io
     ```
 
-4) Revert changes [https\nginx\conf\default.conf](https\nginx\conf\default.conf), make sure IP address for the stack is correct, also note that only GET requests are allowed to visualisation, exposure-feature-info-agent, and geoserver. If access is needed for other routes, please make the necessary changes.
+4) Revert changes in [https\nginx\conf\default.conf](https\nginx\conf\default.conf), make sure IP address for the stack is correct in this part:
+
+    ```text
+    map $host $upstream_host {
+        hd4.theworldavatar.io http://172.17.0.1:3841;
+    }
+    ```
+
+    Note that only GET requests are allowed to visualisation, exposure-feature-info-agent, and geoserver. If access is needed for other routes, please make the necessary changes.
 
 5) Restart nginx
 
