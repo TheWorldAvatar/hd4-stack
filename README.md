@@ -2,6 +2,15 @@
 
 Configuration for stack hosting HD4 related data
 
+## Credentials
+
+The following files are required in [stack-manager\inputs\secrets](stack-manager\inputs\secrets)
+
+- geoserver_password
+- mapbox_api_key
+- mapbox_username
+- postgis_password
+
 ## Contour generation
 
 A script is provided to generate a GeoJSON contour of a tif file for visualisation. The GeoJSON file can be copied into [/stack-data-uploader/inputs/data/ndvi/raw_contour/](/stack-data-uploader/inputs/data/ndvi/raw_contour/) for upload.
