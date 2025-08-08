@@ -1,0 +1,34 @@
+{
+    "name": "sgpostcode",
+    "database": "postgres",
+    "workspace": "twa",
+    "skip": false,
+    "datasetDirectory": "sgpostcode",
+    "dataSubsets": [
+        {
+            "name": "sgpostcode",
+            "type": "vector",
+            "subdirectory": "postcode",
+            "sql": "@/inputs/data/sgpostcode/sql/add_iri.sql",
+            "skip": false,
+            "ogr2ogrOptions": {
+                "sridIn": "EPSG:4326",
+                "sridOut": "EPSG:4326"
+            },
+            "geoServerSettings": {
+                "virtualTable": {
+                    "name": "postcodes",
+                    "sql": "SELECT * FROM sgpostcode",
+                    "geometry": {
+                        "name": "wkb_geometry",
+                        "type": "Point",
+                        "srid": 4326
+                    }
+                }
+            }
+        }
+    ],
+    "mappings": [
+        "sgpostcode.obda"
+    ]
+}
