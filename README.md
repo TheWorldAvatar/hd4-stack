@@ -89,7 +89,7 @@ Instructions are adapted from <https://mindsers.blog/en/post/https-using-nginx-c
 
     ```bash
     cd https
-    docker compose up -d
+    docker compose up webserver -d
     ```
 
     Make sure the domain name (e.g. hd4.theworldavatar.io) is mapped to the IP address of the machine, also note that certbot must be able to contact the IP address at port 80 while creating the certificate.
@@ -119,7 +119,7 @@ Instructions are adapted from <https://mindsers.blog/en/post/https-using-nginx-c
 5) Restart nginx
 
     ```bash
-    docker compose restart
+    docker compose restart webserver
     ```
 
 6) Setup should be complete at this stage, the certificate needs to be renewed manually every three months with the following command.
