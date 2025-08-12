@@ -1,0 +1,89 @@
+{
+    "name": "parks",
+    "database": "postgres",
+    "workspace": "twa",
+    "skip": false,
+    "datasetDirectory": "parks",
+    "dataSubsets": [
+        {
+            "name": "parks_polygons",
+            "type": "vector",
+            "subdirectory": "polygons",
+            "skip": false,
+            "geoServerSettings": {
+                "virtualTable": {
+                    "name": "parks_polygons",
+                    "sql": "SELECT * FROM parks_polygons",
+                    "geometry": {
+                        "name": "wkb_geometry",
+                        "type": "MultiPolygon",
+                        "srid": 4326
+                    }
+                }
+            },
+            "additionalMetadata": {
+                "prefixes": {
+                    "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
+                },
+                "triplePatterns": "?dataSubset rdfs:label \"Greenspace 2023 (NParks)\"."
+            }
+        },
+        {
+            "name": "parks_2016",
+            "type": "vector",
+            "subdirectory": "parks_2016",
+            "skip": false,
+            "sql": "@/inputs/data/parks/sql/parks_2016.sql",
+            "ogr2ogrOptions": {
+                "sridIn": "EPSG:3414",
+                "sridOut": "EPSG:4326",
+                "otherOptions": {
+                    "-nlt": [
+                        "MULTIPOLYGON"
+                    ]
+                }
+            },
+            "geoServerSettings": {
+                "virtualTable": {
+                    "name": "parks_2016",
+                    "sql": "SELECT * FROM parks_2016",
+                    "geometry": {
+                        "name": "wkb_geometry",
+                        "type": "MultiPolygon",
+                        "srid": 4326
+                    }
+                }
+            },
+            "additionalMetadata": {
+                "prefixes": {
+                    "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
+                },
+                "triplePatterns": "?dataSubset rdfs:label \"Greenspace 2016 (URA)\"."
+            }
+        },
+        {
+            "name": "parks_2019",
+            "type": "vector",
+            "subdirectory": "parks_2019",
+            "skip": false,
+            "sql": "@/inputs/data/parks/sql/parks_2019.sql",
+            "geoServerSettings": {
+                "virtualTable": {
+                    "name": "parks_2019",
+                    "sql": "SELECT * FROM parks_2019",
+                    "geometry": {
+                        "name": "wkb_geometry",
+                        "type": "Polygon",
+                        "srid": 4326
+                    }
+                }
+            },
+            "additionalMetadata": {
+                "prefixes": {
+                    "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
+                },
+                "triplePatterns": "?dataSubset rdfs:label \"Greenspace 2019 (URA)\"."
+            }
+        }
+    ]
+}

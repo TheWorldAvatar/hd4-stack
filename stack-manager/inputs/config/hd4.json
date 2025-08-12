@@ -1,0 +1,17 @@
+{
+    "services": {
+        "includes": [
+            "exposure-calculation-agent",
+            "visualisation",
+            "exposure-feature-info-agent",
+            "trip-agent"
+        ],
+        "excludes": [
+            "citydbimpexp",
+            "citytiler"
+        ]
+    },
+    "volumes": {
+        "exposure-calculation-agent": "exposure-calculation-agent"
+    }
+}
