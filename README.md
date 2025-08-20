@@ -129,3 +129,7 @@ Instructions are adapted from <https://mindsers.blog/en/post/https-using-nginx-c
     ```bash
     docker compose run --rm certbot renew
     ```
+
+## Debugging individual services
+
+To spin up the debug services, replace the service name in [stack-manager\inputs\config\hd4.json](stack-manager\inputs\config\hd4.json), for example `"exposure-calculation-agent"` with `"exposure-calculation-agent-debug"`.
