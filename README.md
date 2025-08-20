@@ -1,10 +1,12 @@
 # HD4 stack
 
-Configuration for stack hosting HD4 related data
+Configuration for stack hosting HD4 related data.
 
-## Credentials
+## Mandatory files to prepare
 
-The following files are required in [stack-manager\inputs\secrets](stack-manager\inputs\secrets)
+Copy scripts from <https://github.com/TheWorldAvatar/stack/tree/main/common-scripts> and place them in [common-scripts](common-scripts).
+
+The following credential files are required in [stack-manager\inputs\secrets](stack-manager\inputs\secrets)
 
 - geoserver_password
 - mapbox_api_key
