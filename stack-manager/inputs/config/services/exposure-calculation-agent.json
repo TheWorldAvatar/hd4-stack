@@ -3,7 +3,7 @@
         "Name": "exposure-calculation-agent",
         "TaskTemplate": {
             "ContainerSpec": {
-                "Image": "ghcr.io/theworldavatar/exposure-calculation-agent:1.0.0",
+                "Image": "ghcr.io/theworldavatar/exposure-calculation-agent:1.1.0",
                 "Env": [
                     "NAMESPACE=kb",
                     "DATABASE=postgres"
@@ -31,7 +31,7 @@
                         "ConfigName": "ontop"
                     },
                     {
-                        "ConfigName": "rdf4j"   
+                        "ConfigName": "rdf4j"
                     }
                 ],
                 "Secrets": [
