@@ -34,6 +34,7 @@
                     "source": "park-2016-source",
                     "source-layer": "parks_2016",
                     "type": "fill",
+                    "layerTreeIconOverride": "greenspace",
                     "layout": {
                         "visibility": "none"
                     },
@@ -48,6 +49,7 @@
                     "source": "park-2019-source",
                     "source-layer": "parks_2019",
                     "type": "fill",
+                    "layerTreeIconOverride": "greenspace",
                     "layout": {
                         "visibility": "none"
                     },
@@ -62,6 +64,7 @@
                     "source": "park-polygon-source",
                     "source-layer": "parks_polygons",
                     "type": "fill",
+                    "layerTreeIconOverride": "greenspace",
                     "layout": {
                         "visibility": "none"
                     },
@@ -132,6 +135,7 @@
                         "visibility": "none"
                     },
                     "paint": {
+                        "circle-color": "#000000",
                         "circle-radius": 5,
                         "circle-opacity": 0.8
                     }
@@ -219,7 +223,7 @@
                     }
                 },
                 {
-                    "id": "Religious Facility",
+                    "id": "Religious-Facility",
                     "source-layer": "building_usage",
                     "name": "Religious facility",
                     "source": "usage",
@@ -256,7 +260,7 @@
                     }
                 },
                 {
-                    "id": "Industrial Facility",
+                    "id": "Industrial-Facility",
                     "source-layer": "building_usage",
                     "name": "Industrial facility",
                     "source": "usage",
@@ -293,7 +297,7 @@
                     }
                 },
                 {
-                    "id": "Police Station",
+                    "id": "Police-Station",
                     "source-layer": "building_usage",
                     "name": "Police station",
                     "source": "usage",
@@ -330,7 +334,7 @@
                     }
                 },
                 {
-                    "id": "Emergency Service",
+                    "id": "Emergency-Service",
                     "source-layer": "building_usage",
                     "name": "Emergency Service",
                     "source": "usage",
@@ -367,7 +371,7 @@
                     }
                 },
                 {
-                    "id": "Fire Station",
+                    "id": "Fire-Station",
                     "source-layer": "building_usage",
                     "name": "Fire station",
                     "source": "usage",
@@ -515,7 +519,7 @@
                     }
                 },
                 {
-                    "id": "Transport Facility",
+                    "id": "Transport-Facility",
                     "source-layer": "building_usage",
                     "name": "Transport facility",
                     "source": "usage",
@@ -552,7 +556,7 @@
                     }
                 },
                 {
-                    "id": "Retail Establishment",
+                    "id": "Retail-Establishment",
                     "source-layer": "building_usage",
                     "name": "Retail establishment",
                     "source": "usage",
@@ -774,7 +778,7 @@
                     }
                 },
                 {
-                    "id": "Eating Establishment",
+                    "id": "Eating-Establishment",
                     "source-layer": "building_usage",
                     "name": "Eating establishment",
                     "source": "usage",
@@ -885,7 +889,7 @@
                     }
                 },
                 {
-                    "id": "Cultural facility",
+                    "id": "Cultural-facility",
                     "source-layer": "building_usage",
                     "name": "Cultural facility",
                     "source": "usage",
@@ -959,7 +963,7 @@
                     }
                 },
                 {
-                    "id": "Single residential",
+                    "id": "Single-residential",
                     "source-layer": "building_usage",
                     "name": "Single residential",
                     "source": "usage",
@@ -1033,7 +1037,7 @@
                     }
                 },
                 {
-                    "id": "Drinking establishment",
+                    "id": "Drinking-establishment",
                     "source-layer": "building_usage",
                     "name": "Drinking establishment",
                     "source": "usage",
@@ -1070,7 +1074,7 @@
                     }
                 },
                 {
-                    "id": "Sports facility",
+                    "id": "Sports-facility",
                     "source-layer": "building_usage",
                     "name": "Sports facility",
                     "source": "usage",

@@ -3,7 +3,7 @@
         "Name": "exposure-calculation-agent",
         "TaskTemplate": {
             "ContainerSpec": {
-                "Image": "exposure-calculation-agent-debug",
+                "Image": "exposure-calculation-agent-debug:latest",
                 "Env": [
                     "NAMESPACE=kb",
                     "DATABASE=postgres"
