@@ -45,5 +45,9 @@
                 "time": "dusk"
             }
         ]
+    },
+
+    "icons": {
+        "greenspace": "/images/greenspace_colour.png"
     }
 }
