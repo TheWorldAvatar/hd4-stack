@@ -24,6 +24,33 @@
                     }
                 }
             }
+        },
+        {
+            "name": "raster_2019",
+            "skip": false,
+            "type": "raster",
+            "subdirectory": "raster_2019",
+            "geoServerSettings": {
+                "layerSettings": {
+                    "defaultStyle": "raster"
+                }
+            }
+        },
+        {
+            "name": "raster_dump_2019",
+            "skip": false,
+            "type": "vector",
+            "subdirectory": "raster_dump_2019",
+            "sql": "@/inputs/data/ndvi/raster_dump_2019/raster_dump_2019.sql",
+            "additionalMetadata": {
+                "prefixes": {
+                    "exposure": "https://www.theworldavatar.com/kg/ontoexposure/",
+                    "dcterms": "http://purl.org/dc/terms/",
+                    "dcat": "http://www.w3.org/ns/dcat#",
+                    "xsd": "http://www.w3.org/2001/XMLSchema#"
+                },
+                "triplePatterns": "?dataSubset exposure:hasValueColumn 'val'; exposure:hasGeometryColumn 'wkb_geometry'; exposure:hasAreaColumn 'area'; a exposure:AreaWeightedDataset."
+            }
         }
     ]
 }
