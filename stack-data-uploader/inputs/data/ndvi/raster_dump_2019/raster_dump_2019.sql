@@ -7,4 +7,4 @@ select (temp).geom AS wkb_geometry, (temp).val, ROUND(ST_Area(ST_Transform((temp
 );
 
 DROP INDEX IF EXISTS raster_dump_2019_geom_idx;
-CREATE INDEX raster_dump_2019_geom_idx ON raster_dump USING GIST (wkb_geometry);
+CREATE INDEX raster_dump_2019_geom_idx ON raster_dump_2019 USING GIST (wkb_geometry);
