@@ -23,9 +23,13 @@
             },
             "additionalMetadata": {
                 "prefixes": {
-                    "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
+                    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+                    "dcat": "http://www.w3.org/ns/dcat#",
+                    "exposure": "https://www.theworldavatar.com/kg/ontoexposure/",
+                    "dcterms": "http://purl.org/dc/terms/",
+                    "xsd": "http://www.w3.org/2001/XMLSchema#"
                 },
-                "triplePatterns": "?dataSubset rdfs:label \"Greenspace 2023 (NParks)\"."
+                "triplePatterns": "?dataSubset rdfs:label \"Greenspace 2023 (NParks)\"; a exposure:GreenspacePolygonDataset; dcterms:temporal [ a dcterms:PeriodOfTime; dcat:startDate \"2023-01-01\"^^xsd:date; dcat:endDate \"2023-12-31\"^^xsd:date]"
             }
         },
         {
@@ -56,9 +60,13 @@
             },
             "additionalMetadata": {
                 "prefixes": {
-                    "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
+                    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+                    "dcat": "http://www.w3.org/ns/dcat#",
+                    "exposure": "https://www.theworldavatar.com/kg/ontoexposure/",
+                    "dcterms": "http://purl.org/dc/terms/",
+                    "xsd": "http://www.w3.org/2001/XMLSchema#"
                 },
-                "triplePatterns": "?dataSubset rdfs:label \"Greenspace 2016 (URA)\"."
+                "triplePatterns": "?dataSubset rdfs:label \"Greenspace 2016 (URA)\"; a exposure:GreenspacePolygonDataset; dcterms:temporal [ a dcterms:PeriodOfTime; dcat:startDate \"2016-01-01\"^^xsd:date; dcat:endDate \"2016-12-31\"^^xsd:date]"
             }
         },
         {
@@ -80,9 +88,13 @@
             },
             "additionalMetadata": {
                 "prefixes": {
-                    "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
+                    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+                    "dcat": "http://www.w3.org/ns/dcat#",
+                    "exposure": "https://www.theworldavatar.com/kg/ontoexposure/",
+                    "dcterms": "http://purl.org/dc/terms/",
+                    "xsd": "http://www.w3.org/2001/XMLSchema#"
                 },
-                "triplePatterns": "?dataSubset rdfs:label \"Greenspace 2019 (URA)\"."
+                "triplePatterns": "?dataSubset rdfs:label \"Greenspace 2019 (URA)\"; a exposure:GreenspacePolygonDataset; dcterms:temporal [ a dcterms:PeriodOfTime; dcat:startDate \"2019-01-01\"^^xsd:date; dcat:endDate \"2019-12-31\"^^xsd:date]"
             }
         }
     ]
