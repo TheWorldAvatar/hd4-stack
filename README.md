@@ -55,6 +55,7 @@ Ensure files are copied into the respective folders, table below shows the files
 | <https://data.gov.sg/datasets/d_83bdc9dbb7d05756280e97179ce49d2d/view> | [stack-data-uploader/inputs/data/parks/parks_2016](stack-data-uploader/inputs/data/parks/parks_2016)    |
 | <https://data.gov.sg/datasets/d_77d7ec97be83d44f61b85454f844382f/view> | [stack-data-uploader/inputs/data/parks/polygons](stack-data-uploader/inputs/data/parks/polygons)    |
 | <https://data.gov.sg/datasets/d_9ec9fe2ff2c6c520dd8679933a4a059a/view> | [stack-data-uploader/inputs/data/parks/parks_2019](stack-data-uploader/inputs/data/parks/parks_2019)    |
+| HD4 Programme/WP1/Data/Processed/1-Green Infrastructure/20250618_NDVIs_reclassified_raster/NDVI_S2_sg_2019_95th_continuousValueAbove02.tif | [stack-data-uploader/inputs/data/ndvi/raster_2019](stack-data-uploader/inputs/data/ndvi/raster_2019)    |
 
 If visualisation of NDVI is desired, be sure to generate the necessary file in [Contour generation](#contour-generation).
 
