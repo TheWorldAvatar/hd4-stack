@@ -3,7 +3,7 @@
         "Name": "trip-agent",
         "TaskTemplate": {
             "ContainerSpec": {
-                "Image": "trip-agent-debug",
+                "Image": "trip-agent-debug:latest",
                 "Env": [
                     "NAMESPACE=kb",
                     "DATABASE=postgres"
@@ -17,6 +17,9 @@
                     },
                     {
                         "ConfigName": "ontop"
+                    },
+                    {
+                        "ConfigName": "rdf4j"
                     }
                 ],
                 "Secrets": [
@@ -32,7 +35,7 @@
                     "Name": "web",
                     "Protocol": "tcp",
                     "TargetPort": "5678",
-                    "PublishedPort": "5678"
+                    "PublishedPort": "5679"
                 }
             ]
         }

@@ -3,9 +3,9 @@
         "Name": "trip-agent",
         "TaskTemplate": {
             "ContainerSpec": {
-                "Image": "ghcr.io/theworldavatar/trip-agent:1.1.0",
+                "Image": "ghcr.io/theworldavatar/trip-agent:2.0.0",
                 "Env": [
-                    "NAMESPACE=kb",
+                    "NAMESPACE=hd4",
                     "DATABASE=postgres"
                 ],
                 "Configs": [
@@ -17,6 +17,9 @@
                     },
                     {
                         "ConfigName": "ontop"
+                    },
+                    {
+                        "ConfigName": "rdf4j"
                     }
                 ],
                 "Secrets": [
