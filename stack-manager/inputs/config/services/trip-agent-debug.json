@@ -5,7 +5,7 @@
             "ContainerSpec": {
                 "Image": "trip-agent-debug:latest",
                 "Env": [
-                    "NAMESPACE=kb",
+                    "NAMESPACE=hd4",
                     "DATABASE=postgres"
                 ],
                 "Configs": [
