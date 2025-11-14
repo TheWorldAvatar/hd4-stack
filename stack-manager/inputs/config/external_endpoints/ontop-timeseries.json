@@ -1,0 +1,5 @@
+{
+    "id": "ontop-timeseries",
+    "name": "Time series",
+    "url": "http://hd4-ontop-timeseries:8080/sparql"
+}
