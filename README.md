@@ -24,12 +24,6 @@ cd miscellaneous\ scripts/
 python generate_contour_from_tif.py [REPLACE_WITH_TIF_FILENAME]
 ```
 
-## Trajectory visualisation
-
-Prerequisite: Point time series uploaded using the TimeSeriesClient.
-
-The GeoServer layer has to be generated manually at the moment, the necessary SQL functions and SQL view are in [trajectory-layer/](trajectory-layer/). Replace point IRI in the SQL view if necessary. The layer name should be `botanic_trajectory`, matching what is in [stack-manager\inputs\data\vis\public\config\data.json](stack-manager\inputs\data\vis\public\config\data.json).
-
 ## Setting up visualisation
 
 1) Populate [stack-manager\inputs\data\vis\public\images](stack-manager\inputs\data\vis\public\images) and [stack-manager\inputs\data\vis\public\optional-pages](stack-manager\inputs\data\vis\public\optional-pages) with files from <https://github.com/TheWorldAvatar/viz/tree/main/code/public>.
@@ -63,6 +57,13 @@ If visualisation of NDVI is desired, be sure to generate the necessary file in [
 cd stack-data-uploader
 ./stack.sh start hd4
 ```
+
+## Trajectory visualisation
+
+Prerequisite: Point time series uploaded using the TimeSeriesClient with `uk.ac.cam.cares.jps.base.timeseries.TimeSeriesRDBClientOntop` or `com.cmclinnovations.stack.clients.timeseries.TimeSeriesRDBClient`.
+
+GeoServer layers and the necessary config in the visualisation data.json can be created using the TripLayerGenerator (<https://github.com/TheWorldAvatar/TripLayerGenerator>).
+
 
 ## HTTPS setup
 
