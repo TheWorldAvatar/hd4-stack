@@ -10,8 +10,7 @@
                     "GEOSERVER_WORKSPACE=twa",
                     "DATABASE=postgres",
                     "LAYERNAME=trajectory",
-                    "SCHEMA=timeseries",
-                    "GEOSERVER_HOST=http://localhost:3838"
+                    "SCHEMA=timeseries"
                 ],
                 "Mounts": [
                     {
