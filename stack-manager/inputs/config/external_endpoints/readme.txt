@@ -1,0 +1,1 @@
+The purpose of these files is to add these few endpoints to the stack outgoing federated endpoint (used by almost all agents in this stack).
