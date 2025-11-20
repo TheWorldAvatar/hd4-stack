@@ -3,7 +3,7 @@
         "Name": "exposure-feature-info-agent",
         "TaskTemplate": {
             "ContainerSpec": {
-                "Image": "ghcr.io/theworldavatar/exposure-feature-info-agent:latest",
+                "Image": "ghcr.io/theworldavatar/exposure-feature-info-agent:2.0.0",
                 "Env": [
                     "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=*:5005"
                 ],
