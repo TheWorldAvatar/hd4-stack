@@ -3,6 +3,7 @@
     "externalDatasets": [
         "parks",
         "sgpostcode",
-        "ndvi"
+        "ndvi",
+        "timeseries"
     ]
 }
