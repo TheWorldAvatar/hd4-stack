@@ -50,7 +50,7 @@
                     "dcat": "http://www.w3.org/ns/dcat#",
                     "xsd": "http://www.w3.org/2001/XMLSchema#"
                 },
-                "triplePatterns": "?dataSubset exposure:hasValueColumn 'val'; exposure:hasGeometryColumn 'wkb_geometry'; exposure:hasAreaColumn 'area'; a exposure:AreaWeightedDataset; rdfs:label 'NDVI 2019'"
+                "triplePatterns": "?dataSubset exposure:hasValueColumn 'val'; exposure:hasGeometryColumn 'wkb_geometry'; exposure:hasAreaColumn 'area'; a exposure:AreaWeightedDataset; rdfs:label 'NDVI 2019'; dcterms:temporal [ a dcterms:PeriodOfTime; dcat:startDate \"2019-01-01\"^^xsd:date; dcat:endDate \"2019-12-31\"^^xsd:date]"
             }
         }
     ]
