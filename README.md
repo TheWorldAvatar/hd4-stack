@@ -58,7 +58,7 @@ cd stack-data-uploader
 ./stack.sh start hd4
 ```
 
-## Respinning ontop container (temporary workaround)
+## Restarting ontop container (temporary workaround)
 
 Currently, running the stack data uploader will create two additional ontop containers - `ontop-sgpostocde` and `ontop-timeseries`. If the stack is restarted, these two containers need to be manually spun up in order for federation to work.
 
