@@ -8,7 +8,6 @@
                     "VIS_DATA_JSON=/vis_files/config/data.json",
                     "GEOSERVER_WORKSPACE=twa",
                     "DATABASE=postgres",
-                    "LAYERNAME=trajectory",
                     "SCHEMA=timeseries"
                 ],
                 "Mounts": [
