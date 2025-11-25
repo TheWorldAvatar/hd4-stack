@@ -58,12 +58,57 @@ cd stack-data-uploader
 ./stack.sh start hd4
 ```
 
-## Trajectory visualisation
+## Respinning ontop container (temporary workaround)
 
-Prerequisite: Point time series uploaded using the TimeSeriesClient with `uk.ac.cam.cares.jps.base.timeseries.TimeSeriesRDBClientOntop` or `com.cmclinnovations.stack.clients.timeseries.TimeSeriesRDBClient`.
+Currently, running the stack data uploader will create two additional ontop containers - `ontop-sgpostocde` and `ontop-timeseries`. If the stack is restarted, these two containers need to be manually spun up in order for federation to work.
 
-GeoServer layers and the necessary config in the visualisation data.json can be created using the TripLayerGenerator (<https://github.com/TheWorldAvatar/TripLayerGenerator>).
+To do this, modify contents of [stack-data-uploader/inputs/config/hd4.json](stack-data-uploader/inputs/config/hd4.json) to only update sgpostcode and timeseries:
 
+```json
+{
+    "name": "hd4",
+    "externalDatasets": [
+        "sgpostcode",
+        "timeseries"
+    ]
+}
+```
+
+Remove data to upload in [stack-data-uploader/inputs/config/sgpostcode.json](stack-data-uploader/inputs/config/sgpostcode.json):
+
+```json
+{
+    "name": "sgpostcode",
+    "database": "postgres",
+    "workspace": "twa",
+    "skip": false,
+    "datasetDirectory": "sgpostcode",
+    "dataSubsets": [
+    ],
+    "mappings": [
+        "sgpostcode.obda"
+    ]
+}
+```
+
+Then remove the mapping in [stack-data-uploader/inputs/data/sgpostcode/sgpostcode.obda](stack-data-uploader/inputs/data/sgpostcode/sgpostcode.obda) to look like [stack-data-uploader/inputs/data/timeseries/timeseries.obda](stack-data-uploader/inputs/data/timeseries/timeseries.obda).
+
+Then rerun the stack-data-uploader, this should only spin up the required ontop containers and nothing else.
+
+```bash
+cd stack-data-uploader
+./stack.sh start hd4
+```
+
+## Trajectories
+
+Prerequisite: Point time series uploaded using the TimeSeriesClient with `com.cmclinnovations.stack.clients.timeseries.TimeSeriesRDBClient`. An input agent to instantiate is not committed/provided at the moment.
+
+The trajectory can be processed by the trip agent <https://github.com/TheWorldAvatar/trip-agent> to detect trips and stays.
+
+After that exposures can be calculated using the exposure calculation agent <https://github.com/TheWorldAvatar/exposure-calculation-agent>, if trips are present, exposures are calculated per trip/stay.
+
+GeoServer layers and the necessary config in the visualisation data.json can be created using the TripLayerGenerator (<https://github.com/TheWorldAvatar/TripLayerGenerator>), trips are optional for visualisation.
 
 ## HTTPS setup
 
