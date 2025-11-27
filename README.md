@@ -102,7 +102,7 @@ cd stack-data-uploader
 
 ## Trajectories
 
-Prerequisite: Point time series uploaded using the TimeSeriesClient with `com.cmclinnovations.stack.clients.timeseries.TimeSeriesRDBClient`. An input agent to instantiate is not committed/provided at the moment.
+Prerequisite: Point time series uploaded using the TimeSeriesClient with `com.cmclinnovations.stack.clients.timeseries.TimeSeriesRDBClient`. Users need to provide their own instantiation agents, e.g. the FenlandTrajectoryAgent.
 
 The trajectory can be processed by the trip agent <https://github.com/TheWorldAvatar/trip-agent> to detect trips and stays.
 
