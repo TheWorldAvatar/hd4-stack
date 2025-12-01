@@ -3,7 +3,7 @@
         "Name": "exposure-calculation-agent",
         "TaskTemplate": {
             "ContainerSpec": {
-                "Image": "ghcr.io/theworldavatar/exposure-calculation-agent:2.0.0",
+                "Image": "ghcr.io/theworldavatar/exposure-calculation-agent:2.0.1",
                 "Env": [
                     "NAMESPACE=hd4",
                     "DATABASE=postgres"
