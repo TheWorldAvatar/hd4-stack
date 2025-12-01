@@ -60,7 +60,7 @@ cd stack-data-uploader
 
 ## Restarting ontop container (temporary workaround)
 
-Currently, running the stack data uploader will create two additional ontop containers - `ontop-sgpostocde` and `ontop-timeseries`. If the stack is restarted, these two containers need to be manually spun up in order for federation to work.
+Currently, running the stack data uploader will create two additional ontop containers - `ontop-sgpostcode` and `ontop-timeseries`. If the stack is restarted, these two containers need to be manually spun up in order for federation to work.
 
 To do this, modify contents of [stack-data-uploader/inputs/config/hd4.json](stack-data-uploader/inputs/config/hd4.json) to only update sgpostcode and timeseries:
 
@@ -102,7 +102,7 @@ cd stack-data-uploader
 
 ## Trajectories
 
-Prerequisite: Point time series uploaded using the TimeSeriesClient with `com.cmclinnovations.stack.clients.timeseries.TimeSeriesRDBClient`. An input agent to instantiate is not committed/provided at the moment.
+Prerequisite: Point time series uploaded using the TimeSeriesClient with `com.cmclinnovations.stack.clients.timeseries.TimeSeriesRDBClient`. Users need to provide their own instantiation agents, e.g. the FenlandTrajectoryAgent.
 
 The trajectory can be processed by the trip agent <https://github.com/TheWorldAvatar/trip-agent> to detect trips and stays.
 
