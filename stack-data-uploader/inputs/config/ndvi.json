@@ -44,12 +44,13 @@
             "sql": "@/inputs/data/ndvi/raster_dump_2019/raster_dump_2019.sql",
             "additionalMetadata": {
                 "prefixes": {
+                    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
                     "exposure": "https://www.theworldavatar.com/kg/ontoexposure/",
                     "dcterms": "http://purl.org/dc/terms/",
                     "dcat": "http://www.w3.org/ns/dcat#",
                     "xsd": "http://www.w3.org/2001/XMLSchema#"
                 },
-                "triplePatterns": "?dataSubset exposure:hasValueColumn 'val'; exposure:hasGeometryColumn 'wkb_geometry'; exposure:hasAreaColumn 'area'; a exposure:AreaWeightedDataset."
+                "triplePatterns": "?dataSubset exposure:hasValueColumn 'val'; exposure:hasGeometryColumn 'wkb_geometry'; exposure:hasAreaColumn 'area'; a exposure:AreaWeightedDataset; rdfs:label 'NDVI 2019'; dcterms:temporal exposure:ndviperiod2019. exposure:ndviperiod2019 a dcterms:PeriodOfTime; dcat:startDate \"2019-01-01\"^^xsd:date; dcat:endDate \"2019-12-31\"^^xsd:date"
             }
         }
     ]

@@ -4,7 +4,7 @@
         "Name": "visualisation",
         "TaskTemplate": {
             "ContainerSpec": {
-                "Image": "ghcr.io/theworldavatar/viz:5.33.2",
+                "Image": "ghcr.io/theworldavatar/viz:5.44.5",
                 "Env": [
                     "KEYCLOAK=false",
                     "PROTECTED_PAGES=/map",

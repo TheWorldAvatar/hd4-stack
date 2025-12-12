@@ -1,0 +1,12 @@
+{
+    "name": "timeseries",
+    "database": "postgres",
+    "workspace": "twa",
+    "skip": false,
+    "datasetDirectory": "timeseries",
+    "dataSubsets": [
+    ],
+    "mappings": [
+        "timeseries.obda"
+    ]
+}

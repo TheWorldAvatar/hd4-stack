@@ -1,0 +1,48 @@
+{
+    "ServiceSpec": {
+        "Name": "trip-layer-generator",
+        "TaskTemplate": {
+            "ContainerSpec": {
+                "Image": "ghcr.io/theworldavatar/trip-layer-generator:1.0.0",
+                "Env": [
+                    "VIS_DATA_JSON=/vis_files/config/data.json",
+                    "GEOSERVER_WORKSPACE=twa",
+                    "DATABASE=postgres",
+                    "SCHEMA=timeseries"
+                ],
+                "Mounts": [
+                    {
+                        "Type": "bind",
+                        "Source": "../data/vis/public",
+                        "Target": "/vis_files"
+                    }
+                ],
+                "Configs": [
+                    {
+                        "ConfigName": "postgis"
+                    },
+                    {
+                        "ConfigName": "rdf4j"
+                    },
+                    {
+                        "ConfigName": "geoserver"
+                    }
+                ],
+                "Secrets": [
+                    {
+                        "SecretName": "postgis_password"
+                    },
+                    {
+                        "SecretName": "geoserver_password"
+                    }
+                ]
+            }
+        }
+    },
+    "endpoints": {
+        "rest": {
+            "url": "http://localhost:8080/TripLayerGenerator/",
+            "externalPath": "/trip-layer-generator/"
+        }
+    }
+}

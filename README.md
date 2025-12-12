@@ -24,12 +24,6 @@ cd miscellaneous\ scripts/
 python generate_contour_from_tif.py [REPLACE_WITH_TIF_FILENAME]
 ```
 
-## Trajectory visualisation
-
-Prerequisite: Point time series uploaded using the TimeSeriesClient.
-
-The GeoServer layer has to be generated manually at the moment, the necessary SQL functions and SQL view are in [trajectory-layer/](trajectory-layer/). Replace point IRI in the SQL view if necessary. The layer name should be `botanic_trajectory`, matching what is in [stack-manager\inputs\data\vis\public\config\data.json](stack-manager\inputs\data\vis\public\config\data.json).
-
 ## Setting up visualisation
 
 1) Populate [stack-manager\inputs\data\vis\public\images](stack-manager\inputs\data\vis\public\images) and [stack-manager\inputs\data\vis\public\optional-pages](stack-manager\inputs\data\vis\public\optional-pages) with files from <https://github.com/TheWorldAvatar/viz/tree/main/code/public>.
@@ -63,6 +57,58 @@ If visualisation of NDVI is desired, be sure to generate the necessary file in [
 cd stack-data-uploader
 ./stack.sh start hd4
 ```
+
+## Restarting ontop container (temporary workaround)
+
+Currently, running the stack data uploader will create two additional ontop containers - `ontop-sgpostcode` and `ontop-timeseries`. If the stack is restarted, these two containers need to be manually spun up in order for federation to work.
+
+To do this, modify contents of [stack-data-uploader/inputs/config/hd4.json](stack-data-uploader/inputs/config/hd4.json) to only update sgpostcode and timeseries:
+
+```json
+{
+    "name": "hd4",
+    "externalDatasets": [
+        "sgpostcode",
+        "timeseries"
+    ]
+}
+```
+
+Remove data to upload in [stack-data-uploader/inputs/config/sgpostcode.json](stack-data-uploader/inputs/config/sgpostcode.json):
+
+```json
+{
+    "name": "sgpostcode",
+    "database": "postgres",
+    "workspace": "twa",
+    "skip": false,
+    "datasetDirectory": "sgpostcode",
+    "dataSubsets": [
+    ],
+    "mappings": [
+        "sgpostcode.obda"
+    ]
+}
+```
+
+Then remove the mapping in [stack-data-uploader/inputs/data/sgpostcode/sgpostcode.obda](stack-data-uploader/inputs/data/sgpostcode/sgpostcode.obda) to look like [stack-data-uploader/inputs/data/timeseries/timeseries.obda](stack-data-uploader/inputs/data/timeseries/timeseries.obda).
+
+Then rerun the stack-data-uploader, this should only spin up the required ontop containers and nothing else.
+
+```bash
+cd stack-data-uploader
+./stack.sh start hd4
+```
+
+## Trajectories
+
+Prerequisite: Point time series uploaded using the TimeSeriesClient with `com.cmclinnovations.stack.clients.timeseries.TimeSeriesRDBClient`. Users need to provide their own instantiation agents, e.g. the FenlandTrajectoryAgent.
+
+The trajectory can be processed by the trip agent <https://github.com/TheWorldAvatar/trip-agent> to detect trips and stays.
+
+After that exposures can be calculated using the exposure calculation agent <https://github.com/TheWorldAvatar/exposure-calculation-agent>, if trips are present, exposures are calculated per trip/stay.
+
+GeoServer layers and the necessary config in the visualisation data.json can be created using the TripLayerGenerator (<https://github.com/TheWorldAvatar/TripLayerGenerator>), trips are optional for visualisation.
 
 ## HTTPS setup
 

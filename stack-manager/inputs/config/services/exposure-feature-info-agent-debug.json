@@ -3,7 +3,7 @@
         "Name": "exposure-feature-info-agent",
         "TaskTemplate": {
             "ContainerSpec": {
-                "Image": "ghcr.io/theworldavatar/exposure-feature-info-agent:1.0.0",
+                "Image": "ghcr.io/theworldavatar/exposure-feature-info-agent:2.0.0",
                 "Env": [
                     "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=*:5005"
                 ],
@@ -16,6 +16,9 @@
                     },
                     {
                         "ConfigName": "ontop"
+                    },
+                    {
+                        "ConfigName": "rdf4j"
                     }
                 ],
                 "Secrets": [
@@ -31,7 +34,7 @@
                     "Name": "web",
                     "Protocol": "tcp",
                     "TargetPort": "5005",
-                    "PublishedPort": "5005"
+                    "PublishedPort": "5006"
                 }
             ]
         }

@@ -4,7 +4,8 @@
             "exposure-calculation-agent",
             "visualisation",
             "exposure-feature-info-agent",
-            "trip-agent"
+            "trip-agent",
+            "trip-layer-generator"
         ],
         "excludes": [
             "citydbimpexp",

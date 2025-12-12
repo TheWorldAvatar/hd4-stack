@@ -29,7 +29,7 @@
                     "dcterms": "http://purl.org/dc/terms/",
                     "xsd": "http://www.w3.org/2001/XMLSchema#"
                 },
-                "triplePatterns": "?dataSubset rdfs:label \"Greenspace 2023 (NParks)\"; a exposure:GreenspacePolygonDataset; dcterms:temporal [ a dcterms:PeriodOfTime; dcat:startDate \"2023-01-01\"^^xsd:date; dcat:endDate \"2023-12-31\"^^xsd:date]"
+                "triplePatterns": "?dataSubset rdfs:label \"Greenspace 2023 (NParks)\"; a exposure:GreenspacePolygonDataset; dcterms:temporal exposure:greenspace2023period. exposure:greenspace2023period a dcterms:PeriodOfTime; dcat:startDate \"2023-01-01\"^^xsd:date; dcat:endDate \"2023-12-31\"^^xsd:date; exposure:hasGeometryColumn 'wkb_geometry'"
             }
         },
         {
@@ -66,7 +66,7 @@
                     "dcterms": "http://purl.org/dc/terms/",
                     "xsd": "http://www.w3.org/2001/XMLSchema#"
                 },
-                "triplePatterns": "?dataSubset rdfs:label \"Greenspace 2016 (URA)\"; a exposure:GreenspacePolygonDataset; dcterms:temporal [ a dcterms:PeriodOfTime; dcat:startDate \"2016-01-01\"^^xsd:date; dcat:endDate \"2016-12-31\"^^xsd:date]"
+                "triplePatterns": "?dataSubset rdfs:label \"Greenspace 2016 (URA)\"; a exposure:GreenspacePolygonDataset; dcterms:temporal exposure:greenspace2016period. exposure:greenspace2016period a dcterms:PeriodOfTime; dcat:startDate \"2016-01-01\"^^xsd:date; dcat:endDate \"2016-12-31\"^^xsd:date; exposure:hasGeometryColumn 'wkb_geometry'"
             }
         },
         {
@@ -94,7 +94,7 @@
                     "dcterms": "http://purl.org/dc/terms/",
                     "xsd": "http://www.w3.org/2001/XMLSchema#"
                 },
-                "triplePatterns": "?dataSubset rdfs:label \"Greenspace 2019 (URA)\"; a exposure:GreenspacePolygonDataset; dcterms:temporal [ a dcterms:PeriodOfTime; dcat:startDate \"2019-01-01\"^^xsd:date; dcat:endDate \"2019-12-31\"^^xsd:date]"
+                "triplePatterns": "?dataSubset rdfs:label \"Greenspace 2019 (URA)\"; a exposure:GreenspacePolygonDataset; dcterms:temporal exposure:greenspace2019period. exposure:greenspace2019period a dcterms:PeriodOfTime; dcat:startDate \"2019-01-01\"^^xsd:date; dcat:endDate \"2019-12-31\"^^xsd:date; exposure:hasGeometryColumn 'wkb_geometry'"
             }
         }
     ]
