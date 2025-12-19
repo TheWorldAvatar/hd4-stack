@@ -1,0 +1,12 @@
+[PrefixDeclaration]
+:                   https://www.theworldavatar.com/kg/
+geo:                http://www.opengis.net/ont/geosparql#
+exposure:           https://www.theworldavatar.com/kg/ontoexposure/
+ 
+[MappingDeclaration] @collection [[
+mappingId   timezone
+target      :timezone/{ogc_fid} a exposure:TimeZone;
+                geo:asWKT "{wkt}"^^geo:wktLiteral;
+                exposure:tzid {tzid}.
+source      SELECT ogc_fid, tzid, ST_AsText(wkb_geometry) as wkt FROM timezone
+]]
