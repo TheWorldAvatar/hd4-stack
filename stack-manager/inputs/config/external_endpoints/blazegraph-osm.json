@@ -1,0 +1,5 @@
+{
+    "id": "blazegraph-osm",
+    "name": "Blazegraph OSM",
+    "url": "http://hd4-blazegraph:8080/blazegraph/namespace/osm/sparql"
+}
