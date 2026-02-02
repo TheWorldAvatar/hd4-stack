@@ -3,13 +3,20 @@ from rasterio.transform import xy
 import numpy as np
 import matplotlib.pyplot as plt
 import geojsoncontour
-import sys
+import json
+from pathlib import Path
+import re
+
+# important assumption, year is extracted from the filename, e.g. ndvi_2023.tif
 
 
-def main():
+def main(raster_file):
     """
     This script reads in a TIF file and  converts it into polygons
     """
+    match = re.search(r"(19|20)\d{2}", str(raster_file))
+    year = int(match.group()) if match else None
+
     x_list = []
     y_list = []
     value_list = []
@@ -17,7 +24,7 @@ def main():
     num_y_cell = 100
 
     i = 0
-    with rasterio.open(sys.argv[1]) as src:
+    with rasterio.open(raster_file) as src:
         band = src.read(1)
         transform = src.transform
         nodata = src.nodata
@@ -64,14 +71,32 @@ def main():
                            levels=contour_level, cmap=plt.cm.jet)
     plt.colorbar(contourf)
     ax.remove()
-    plt.savefig("ndvi_colorbar.png", bbox_inches='tight',
-                transparent=True, dpi=300)
+
     geojsonstring = geojsoncontour.contourf_to_geojson(
         contourf=contourf, fill_opacity=0.5)
 
-    with open('ndvi.geojson', 'w') as f:
-        f.write(geojsonstring)
+    # add property to each feature if year is present
+    if year:
+        colorbar_filename = f"colorbar_{year}.png"
+        parsed_geojson = json.loads(geojsonstring)
+
+        for feature in parsed_geojson.get("features", []):
+            feature["properties"]["year"] = year
+
+        with open(f"processed/{raster_file.stem}.geojson", 'w') as f:
+            json.dump(parsed_geojson, f)
+    else:
+        colorbar_filename = f"{raster_file.stem}_colorbar.png"
+
+        with open(f"processed/{raster_file.stem}.geojson", 'w') as f:
+            f.write(geojsonstring)
+
+    plt.savefig(f"processed/{colorbar_filename}", bbox_inches='tight',
+                transparent=True, dpi=300)
 
 
 if __name__ == "__main__":
-    main()
+    folder = '../stack-data-uploader/inputs/data/ndvi/raster'
+    files = list(Path(folder).glob("*.tif"))
+    for file in files:
+        main(file)
