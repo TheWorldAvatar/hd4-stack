@@ -1,0 +1,17 @@
+{
+    "exposure_table": "ndvi_raster",
+    "rdf_types": [
+        "https://www.theworldavatar.com/kg/ontoexposure/AreaWeightedSum"
+    ],
+    "distances": [
+        400,
+        800,
+        1000
+    ],
+    "dataset_filter_values": {
+        "year": [
+            2016
+        ]
+    },
+    "url": "http://localhost:3838/exposure-calculation-agent/trigger_calculation/"
+}
