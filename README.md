@@ -115,6 +115,18 @@ After that exposures can be calculated using the exposure calculation agent <htt
 
 GeoServer layers and the necessary config in the visualisation data.json can be created using the TripLayerGenerator (<https://github.com/TheWorldAvatar/TripLayerGenerator>), trips are optional for visualisation.
 
+## Generating and downloading exposure calculation data
+
+Script to start a batch of simulations: [miscellaneous scripts/generate_results.py](/miscellaneous%20scripts/generate_results.py)
+
+Input file name: generate_results_inputs.json, example - [miscellaneous scripts/generate_results_inputs.example.json](miscellaneous%20scripts/generate_results_inputs.example.json).
+
+Script to download results:
+
+[miscellaneous scripts/download_results.py](/miscellaneous%20scripts/download_results.py)
+
+Input file name: download_results_inputs.json, example - [miscellaneous scripts/download_results_inputs.example.json](miscellaneous%20scripts/download_results_inputs.example.json).
+
 ## HTTPS setup
 
 Instructions are adapted from <https://mindsers.blog/en/post/https-using-nginx-certbot-docker/>. The committed files [https/](https/) show the final states, it is necessary to make modifications to the files at least during the initial setup.
