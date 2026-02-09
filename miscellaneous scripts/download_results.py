@@ -3,7 +3,7 @@ import requests
 from itertools import product
 from pathlib import Path
 
-path = Path('download_results_inputs.json')
+path = Path('input/download_results_inputs.json')
 
 if not path.exists():
     raise FileNotFoundError('download_results_inputs.json does not exist')

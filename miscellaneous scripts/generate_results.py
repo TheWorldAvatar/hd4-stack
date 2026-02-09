@@ -4,7 +4,7 @@ import requests
 from datetime import datetime, timezone
 from pathlib import Path
 
-path = Path('generate_results_inputs.json')
+path = Path('input/generate_results_inputs.json')
 
 if not path.exists():
     raise FileNotFoundError('generate_results_inputs.json does not exist')
