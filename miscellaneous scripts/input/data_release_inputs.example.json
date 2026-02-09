@@ -1,0 +1,18 @@
+{
+    "data_dictionary": "data_dictionary/HD4geospatial_module5.5_20260209.xlsx",
+    "input_file_to_data_dictionary_filter": {
+        "downloads/total_area_ndvi.csv": {
+            "method": "e",
+            "datatype": "a",
+            "attribute": null,
+            "ParkType": null
+        },
+        "downloads/area_weighted_ndvi.csv": {
+            "method": "e",
+            "datatype": "w",
+            "attribute": null,
+            "ParkType": null
+        }
+    },
+    "output_file": "processed/GGPA2.csv"
+}
