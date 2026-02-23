@@ -36,8 +36,5 @@ params = {"subject_query_file": "subject_query.sparql",
 
 response = requests.get(url=base_url, params=params)
 
-# with open(f"pixel_count_ndvi/pixel_count_ndvi.csv", "wb") as f:
-#     f.write(response.content)
-
 with open(inputs['output_file'], "wb") as f:
     f.write(response.content)
