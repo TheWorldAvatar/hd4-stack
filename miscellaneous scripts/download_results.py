@@ -31,8 +31,7 @@ params = {"subject_query_file": "subject_query.sparql",
           "subject_label_query_file": "subject_label_query.sparql",
           "rdf_type": rdf_type,
           "exposure_table": exposure_table,
-          "dataset_filter": dataset_filters_as_string,
-          "multiplication_factor": inputs['multiplication_factor']}
+          "dataset_filter": dataset_filters_as_string}
 
 response = requests.get(url=base_url, params=params)
 
