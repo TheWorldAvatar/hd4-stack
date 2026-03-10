@@ -146,6 +146,12 @@
                         "circle-color": "#000000",
                         "circle-radius": 5,
                         "circle-opacity": 0.8
+                    },
+                    "highlight": {
+                        "highlightFeatureId": "ogc_fid",
+                        "paint": {
+                            "circle-color": "red"
+                        }
                     }
                 }
             ]
