@@ -13,5 +13,8 @@
             2016
         ]
     },
-    "url": "http://localhost:3838/exposure-calculation-agent/trigger_calculation/"
+    // either provide subject_query_file or subject, not both
+    "subject_query_file": "subject_query.sparql",
+    "subject": "http://subject1",
+    "url": "http://localhost:3838/exposure-calculation-agent/trigger_calculation/bulk"
 }
