@@ -10,24 +10,11 @@
             "skip": true,
             "type": "vector",
             "subdirectory": "greenspace_properties",
-            "ogr2ogrOptions": {
-                "layerCreationOptions": {
-                    "COLUMN_TYPES": "formal_green=integer,public_access_closest_buffer=integer"
-                }
-            },
-            "sql": "CREATE INDEX IF NOT EXISTS greenspace_properties_year_idx ON greenspace_properties(year)",
-            "additionalMetadata": {
-                "prefixes": {
-                    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-                    "exposure": "https://www.theworldavatar.com/kg/ontoexposure/",
-                    "xsd": "http://www.w3.org/2001/XMLSchema#"
-                },
-                "triplePatterns": "?dataSubset exposure:hasGeometryColumn 'wkb_geometry'."
-            }
+            "sql": "CREATE INDEX IF NOT EXISTS greenspace_properties_year_idx ON greenspace_properties(year)"
         },
         {
             "name": "ndvi_raster",
-            "skip": false,
+            "skip": true,
             "type": "raster",
             "subdirectory": "raster",
             "sql": "@/inputs/data/ndvi/sql/add_year_and_area.sql",
