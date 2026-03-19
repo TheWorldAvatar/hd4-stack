@@ -5,8 +5,8 @@ CREATE TABLE ndvi_raster_with_properties (
     poly_id int REFERENCES greenspace_properties(ogc_fid) ON DELETE CASCADE,
     raster_id int REFERENCES ndvi_raster(rid) ON DELETE CASCADE,
     year int,
-    formal_green int,
-    public_access int,
+    formal_green boolean,
+    public_access boolean,
     area double precision,
     rast raster
 );
@@ -16,8 +16,8 @@ SELECT
     p.ogc_fid AS poly_id,
     r.rid AS raster_id,
     r.year,
-    p.formal_green_final_value_imputed AS formal_green,
-    p.public_access_final_value_imputed AS public_access,
+    p.formal_green AS formal_green,
+    p.public_access AS public_access,
     r.area,
     ST_Clip(r.rast, p.wkb_geometry) AS rast
 FROM ndvi_raster r
