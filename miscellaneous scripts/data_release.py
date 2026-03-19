@@ -4,6 +4,7 @@ from collections import defaultdict
 import csv
 from pathlib import Path
 import json
+from itertools import product
 
 path = Path('input/data_release_inputs.json')
 if not path.exists():
@@ -25,8 +26,8 @@ subject_to_point = {}
 # subject_to_result = {}
 subject_to_dd_to_value = defaultdict(dict)
 
-years = range(2016, 2026)
-distances = [400, 800, 1000]
+years = inputs['years']
+distances = inputs['distances']
 my_header_to_dd_dict = {}
 
 row_number = 0
@@ -60,27 +61,66 @@ for input_file, data_dictionary_filter in input_file_to_data_dictionary_filter.i
 
     my_header_to_dd_dict = {}
 
+    dd_filter_with_dict = {}
+    dd_filter_that_are_constant = {}
+    # go through data_dictionary_filter and extract instances that are dictionaries, this will be used for cross product later
+    for k, v in data_dictionary_filter.items():
+        if isinstance(v, dict):
+            dd_filter_with_dict[k] = v
+        else:
+            dd_filter_that_are_constant[k] = v
+
+    if dd_filter_with_dict:
+        keys = list(dd_filter_with_dict.keys())
+
+        # Convert each inner dict to list of (key, value) pairs
+        values = [list(d.items()) for d in dd_filter_with_dict.values()]
+
+        # Cartesian product
+        combinations = product(*values)
+
+        # Build result
+        dynamic_dd_filters = [
+            dict(zip(keys, combo))
+            for combo in combinations
+        ]
+    else:
+        dynamic_dd_filters = []
+
     # find the corresponding data dictionary for my headers
     for y in years:
         for d in distances:
-            mask = pd.Series(True, index=data_dictionary.index)
-            mask &= data_dictionary["period"] == y
-            mask &= data_dictionary["buffer"] == d
+            for dynamic_dd_filter in dynamic_dd_filters:
+                filter_params_on_my_header = [y, d]
+                mask = pd.Series(True, index=data_dictionary.index)
+                mask &= data_dictionary["period"] == y
+                mask &= data_dictionary["buffer"] == d
 
-            for k, v in data_dictionary_filter.items():
-                if v is None:
-                    mask &= data_dictionary[k].isna()
-                else:
-                    mask &= data_dictionary[k] == v
+                for k, v in dd_filter_that_are_constant.items():
+                    if v is None:
+                        mask &= data_dictionary[k].isna()
+                    else:
+                        mask &= data_dictionary[k] == v
 
-            values = data_dictionary.loc[
-                mask,
-                "SG100K_variable_name (Formula)"
-            ]
-            if values.size != 1:
-                raise Exception('Cannot find corresponding data dictionary')
-            # hardcoded in exposure calculation agent
-            my_header_to_dd_dict[f"d{d}_y{y}"] = values.iloc[0]
+                for k, v in dynamic_dd_filter.items():
+                    if v[0] is None or v[1] is None:
+                        raise Exception(
+                            'null not allowed in dynamic dd filter')
+                    mask &= data_dictionary[k] == v[0]
+                    filter_params_on_my_header.append(v[1])
+
+                values = data_dictionary.loc[
+                    mask,
+                    "SG100K_variable_name (Formula)"
+                ]
+                if values.size != 1:
+                    raise Exception(
+                        'Cannot find corresponding data dictionary')
+
+                # find pairings between my header and dd
+                for col in cols:
+                    if all(str(sub) in col for sub in filter_params_on_my_header):
+                        my_header_to_dd_dict[col] = values.iloc[0]
 
     # row loop
     for row in data.itertuples(index=False):
@@ -98,6 +138,7 @@ for input_file, data_dictionary_filter in input_file_to_data_dictionary_filter.i
         for k, v in row_data.items():
             dd = my_header_to_dd_dict[k]
             subject_to_dd_to_value[subject][dd] = v
+
 
 # now calculate average for each postal code if there are duplicates
 data_for_csv = []
@@ -134,7 +175,17 @@ for postcode, subjects in postcode_to_subjects.items():
 
     data_for_csv.append(row_for_csv)
 
+
+def format_row(row):
+    # limit 2 decimal places
+    return {
+        k: f"{v:.2f}" if isinstance(v, float) else v
+        for k, v in row.items()
+    }
+
+
 with open(output_file, 'w', newline="", encoding="utf-8") as f:
     writer = csv.DictWriter(f, fieldnames=data_for_csv[0].keys())
     writer.writeheader()
-    writer.writerows(data_for_csv)
+    for row in data_for_csv:
+        writer.writerow(format_row(row))
