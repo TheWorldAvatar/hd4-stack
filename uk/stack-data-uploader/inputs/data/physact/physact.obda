@@ -1,0 +1,26 @@
+[PrefixDeclaration]
+pa:                 https://www.theworldavatar.com/kg/ontophysact/
+bot:                https://w3id.org/bot#
+fibo-fnd-arr-id:    https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/IdentifiersAndIndices/
+fibo-fnd-plc-adr:   https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/
+fibo-fnd-plc-loc:   https://spec.edmcouncil.org/fibo/ontology/FND/Places/Locations/
+fibo-fnd-rel-rel:   https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/
+geo:                http://www.opengis.net/ont/geosparql#
+sf:                 http://www.opengis.net/ont/sf
+rdfs:               http://www.w3.org/2000/01/rdf-schema#
+xsd:                http://www.w3.org/2001/XMLSchema#
+
+[MappingDeclaration] @collection [[
+mappingId   PhysicalActivityVenue
+target      pa:physicalactivityvenue_{ogc_fid} a pa:physicalactivityvenue;
+                pa:hasName "{name}"^^xsd:string ;
+                fibo-fnd-plc-adr:hasAddress pa:address_{ogc_fid} .
+            pa:address_{ogc_fid} a fibo-fnd-plc-adr:ConventionalStreetAddress ; 
+                fibo-fnd-plc-adr:hasPostalCode {postcode} ;
+                fibo-fnd-plc-loc:hasCountry <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/UnitedKingdom> ;
+                fibo-fnd-arr-id:isIndexTo pa:location_{ogc_fid} .
+            pa:location_{ogc_fid} a fibo-fnd-plc-loc:PhysicalLocation ;
+                a sf:Point; 
+                geo:asWKT "{wkb_geometry}"^^geo:wktLiteral .
+source      SELECT ogc_fid, name, ref_no, pointx_class, postcode, ST_ASTEXT(wkb_geometry) as wkb_geometry FROM physact
+]]
