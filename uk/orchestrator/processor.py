@@ -246,6 +246,7 @@ def instantiate_trajectories():
 
 def instantiate():
     instantiate_trajectories()
+    time.sleep(5)
     trajectory_store = TrajectoryStore(f"{STACK_HOST}/blazegraph/namespace/hd4/sparql")
     traj_iris = trajectory_store.get_trajectory_iris()
     #print(f"Trajectory IRIs: {traj_iris}")
