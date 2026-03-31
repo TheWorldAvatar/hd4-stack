@@ -32,8 +32,8 @@ for feature in geojson.get("features", []):
     new_props = {}
     for k, v in old_props.items():
         if k in property_mapping:
-            if k in boolean_properties:
-                if isinstance(v, bool):
+            if k in boolean_properties or v is None:
+                if isinstance(v, bool) or v is None:
                     new_props[property_mapping[k]] = v
                 elif v in ("0", "1"):
                     new_props[property_mapping[k]] = bool(int(v))
