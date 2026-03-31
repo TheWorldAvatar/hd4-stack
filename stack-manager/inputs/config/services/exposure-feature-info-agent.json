@@ -3,7 +3,10 @@
         "Name": "exposure-feature-info-agent",
         "TaskTemplate": {
             "ContainerSpec": {
-                "Image": "ghcr.io/theworldavatar/exposure-feature-info-agent:2.0.0",
+                "Image": "ghcr.io/theworldavatar/exposure-feature-info-agent:2.1.0",
+                "Env": [
+                    "NAMESPACE=hd4"
+                ],
                 "Configs": [
                     {
                         "ConfigName": "blazegraph"
