@@ -1,6 +1,6 @@
 # Miscellaneous scripts
 
-This folder contains scripts to interact with the exposure calculation agent (generate_results.py and download_results.oy)
+This folder contains scripts to interact with the exposure calculation agent (generate_results.py and download_results.py). Example input file is given for each script.
 
 ## generate_result.py
 
