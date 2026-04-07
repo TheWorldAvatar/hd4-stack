@@ -1,0 +1,8 @@
+PREFIX fibo-fnd-plc-loc: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Locations/>
+PREFIX fibo-fnd-arr-id: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/IdentifiersAndIndices/>
+PREFIX fibo-fnd-plc-adr: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/>
+SELECT ?Label ?Feature
+WHERE {
+  ?address fibo-fnd-arr-id:isIndexTo ?Feature;
+           fibo-fnd-plc-adr:hasPostalCode ?Label.
+}

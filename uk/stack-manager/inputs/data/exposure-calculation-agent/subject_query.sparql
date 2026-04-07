@@ -1,0 +1,6 @@
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX fibo-fnd-plc-loc: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Locations/>
+SELECT ?feature 
+WHERE {
+  ?feature a fibo-fnd-plc-loc:PhysicalLocation.
+}
