@@ -4,11 +4,14 @@
         "formal_green_final_value_imputed": "formal_green",
         "public_access_final_value_imputed": "public_access",
         "public_access_imputed_flag": "public_access_imputed_flag",
+        "formal_green_imputed_flag": "formal_green_imputed_flag",
         "year": "year"
     },
     "boolean_properties": [
         "formal_green_final_value_imputed",
-        "public_access_final_value_imputed"
+        "public_access_final_value_imputed",
+        "public_access_imputed_flag",
+        "formal_green_imputed_flag"
     ],
     "input_file": "input/original_input.geojson",
     "output_file": "processed/greenspace_properties.geojson"
