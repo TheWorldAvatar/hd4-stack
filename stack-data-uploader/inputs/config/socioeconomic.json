@@ -1,0 +1,44 @@
+{
+    "name": "socioeconomic",
+    "database": "postgres",
+    "workspace": "twa",
+    "skip": false,
+    "datasetDirectory": "socioeconomic",
+    "dataSubsets": [
+        {
+            "name": "planning_area",
+            "skip": true,
+            "type": "vector",
+            "subdirectory": "planning_area",
+            "geoServerSettings": {
+                "virtualTable": {
+                    "name": "planning_area",
+                    "sql": "SELECT * FROM planning_area",
+                    "geometry": {
+                        "name": "wkb_geometry",
+                        "type": "MultiPolygon",
+                        "srid": 4326
+                    }
+                }
+            }
+        },
+        {
+            "name": "income",
+            "skip": true,
+            "type": "vector",
+            "subdirectory": "income"
+        },
+        {
+            "name": "income_with_geometry",
+            "skip": true,
+            "type": "vector",
+            "sql": "@/inputs/data/socioeconomic/sql/income_with_geometry.sql"
+        },
+        {
+            "name": "income_with_geometry_original",
+            "skip": false,
+            "type": "vector",
+            "sql": "@/inputs/data/socioeconomic/sql/income_with_geometry_original.sql"
+        }
+    ]
+}
