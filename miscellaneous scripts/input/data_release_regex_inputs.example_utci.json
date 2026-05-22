@@ -1,6 +1,7 @@
 {
     "input_file": "downloads/utci.csv",
     "output_file": "processed/heat_release.csv",
+    "number_of_decimals": 3,
     "key_mappings": [
         {
             "d400": "e400"

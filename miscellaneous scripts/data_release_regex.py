@@ -128,10 +128,9 @@ for postcode, subjects in postcode_to_subjects.items():
     data_for_csv.append(row_for_csv)
 
 
-def format_row(row):
-    # limit 2 decimal places
+def format_row(row, decimals):
     return {
-        k: f"{v:.2f}" if isinstance(v, float) else v
+        k: f"{v:.{decimals}f}" if isinstance(v, float) else v
         for k, v in row.items()
     }
 
@@ -139,5 +138,6 @@ def format_row(row):
 with open(inputs['output_file'], 'w', newline="", encoding="utf-8") as f:
     writer = csv.DictWriter(f, fieldnames=data_for_csv[0].keys())
     writer.writeheader()
+    number_of_decimals = inputs['number_of_decimals']
     for row in data_for_csv:
-        writer.writerow(format_row(row))
+        writer.writerow(format_row(row, decimals=number_of_decimals))
