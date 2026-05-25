@@ -1,7 +1,0 @@
-{
-    "input_files": [
-        "processed/GGPA2.csv",
-        "processed/closest_park_release.csv"
-    ],
-    "output_file": "processed/combined_data_release.csv"
-}
