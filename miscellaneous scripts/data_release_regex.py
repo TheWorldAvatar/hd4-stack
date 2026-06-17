@@ -5,6 +5,8 @@ import csv
 from pathlib import Path
 import json
 from itertools import product
+import math
+import statistics
 
 num_postcode_header = 'GAD1_latlon_postcode'
 
@@ -110,20 +112,21 @@ for postcode, subjects in postcode_to_subjects.items():
 
     result_headers = subject_to_dd_to_value[subjects_to_consider[0]].keys()
 
-    total_val = {}
-    for result_header in result_headers:
-        total_val[result_header] = 0
+    list_for_average = defaultdict(list)
 
     for subject in subjects_to_consider:
         for result_header in result_headers:
-            total_val[result_header] += subject_to_dd_to_value[subject][result_header]
+            if not math.isnan(subject_to_dd_to_value[subject][result_header]):
+                list_for_average[result_header].append(
+                    subject_to_dd_to_value[subject][result_header])
 
     row_for_csv = {}
     row_for_csv['postal_code'] = postcode
     row_for_csv[num_postcode_header] = num_points
 
     for result_header in result_headers:
-        row_for_csv[result_header] = total_val[result_header] / num_points
+        row_for_csv[result_header] = statistics.mean(
+            list_for_average[result_header])
 
     data_for_csv.append(row_for_csv)
 
