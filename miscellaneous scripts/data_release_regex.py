@@ -125,8 +125,11 @@ for postcode, subjects in postcode_to_subjects.items():
     row_for_csv[num_postcode_header] = num_points
 
     for result_header in result_headers:
-        row_for_csv[result_header] = statistics.mean(
-            list_for_average[result_header])
+        if len(list_for_average[result_header]) > 0:
+            row_for_csv[result_header] = statistics.mean(
+                list_for_average[result_header])
+        else:
+            row_for_csv[result_header] = ''
 
     data_for_csv.append(row_for_csv)
 

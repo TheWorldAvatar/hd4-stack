@@ -3,6 +3,7 @@ from collections import defaultdict
 import csv
 from pathlib import Path
 import json
+import math
 
 # combines multiple files into a single file
 path = Path('input/batch_release_input.json')
@@ -55,14 +56,23 @@ for key, item in postal_code_to_header_to_value.items():
     row_for_csv['postal_code'] = key
 
     for header, value in item.items():
-        row_for_csv[header] = value
+        if math.isnan(value):
+            row_for_csv[header] = ''
+        else:
+            row_for_csv[header] = value
         result_headers_set.add(header)
 
     data_for_csv.append(row_for_csv)
 
 with open(inputs['output_file'], 'w', newline="", encoding="utf-8") as f:
     headers = ['postal_code']
-    headers.extend(result_headers_set)
+    headers.append('GAD1_latlon_postcode')
+
+    remaining_headers = list(result_headers_set)
+    remaining_headers.remove('GAD1_latlon_postcode')
+    remaining_headers.sort()
+
+    headers.extend(remaining_headers)
     writer = csv.DictWriter(f, fieldnames=headers)
     writer.writeheader()
     for row in data_for_csv:
