@@ -38,7 +38,7 @@
                     "exposure": "https://www.theworldavatar.com/kg/ontoexposure/",
                     "xsd": "http://www.w3.org/2001/XMLSchema#"
                 },
-                "triplePatterns": "?dataSubset exposure:hasGeometryColumn 'rast'; exposure:hasAreaColumn 'area'; rdfs:label 'NDVI with properties'."
+                "triplePatterns": "?dataSubset exposure:hasAreaColumn 'area'; rdfs:label 'NDVI with properties'."
             }
         }
     ]
