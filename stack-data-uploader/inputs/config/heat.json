@@ -1,0 +1,27 @@
+{
+    "name": "heat",
+    "database": "postgres",
+    "workspace": "twa",
+    "skip": false,
+    "datasetDirectory": "heat",
+    "dataSubsets": [
+        {
+            "name": "utci_raster",
+            "skip": false,
+            "type": "raster",
+            "subdirectory": "utci",
+            "sql": "@/inputs/data/heat/sql/add_month.sql",
+            "gdalTranslateOptions": {
+                "sridOut": "EPSG:4326"
+            },
+            "additionalMetadata": {
+                "prefixes": {
+                    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+                    "exposure": "https://www.theworldavatar.com/kg/ontoexposure/",
+                    "xsd": "http://www.w3.org/2001/XMLSchema#"
+                },
+                "triplePatterns": "?dataSubset rdfs:label 'UTCI'."
+            }
+        }
+    ]
+}
