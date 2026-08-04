@@ -23,22 +23,16 @@
             }
         },
         {
-            "name": "income",
+            "name": "income_pca",
             "skip": true,
             "type": "vector",
-            "subdirectory": "income"
+            "subdirectory": "income_pca"
         },
         {
-            "name": "income_with_geometry",
+            "name": "income_pca_with_geometry",
             "skip": true,
             "type": "vector",
-            "sql": "@/inputs/data/socioeconomic/sql/income_with_geometry.sql"
-        },
-        {
-            "name": "income_with_geometry_original",
-            "skip": false,
-            "type": "vector",
-            "sql": "@/inputs/data/socioeconomic/sql/income_with_geometry_original.sql"
+            "sql": "@/inputs/data/socioeconomic/sql/income_pca_with_geometry.sql"
         }
     ]
 }

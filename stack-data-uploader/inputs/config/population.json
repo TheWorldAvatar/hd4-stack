@@ -1,0 +1,23 @@
+{
+    "name": "population",
+    "database": "postgres",
+    "workspace": "twa",
+    "skip": false,
+    "datasetDirectory": "population",
+    "dataSubsets": [
+        {
+            "name": "population_raster",
+            "skip": false,
+            "type": "raster",
+            "subdirectory": "raster",
+            "additionalMetadata": {
+                "prefixes": {
+                    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+                    "exposure": "https://www.theworldavatar.com/kg/ontoexposure/",
+                    "xsd": "http://www.w3.org/2001/XMLSchema#"
+                },
+                "triplePatterns": "?dataSubset rdfs:label 'Population'."
+            }
+        }
+    ]
+}
