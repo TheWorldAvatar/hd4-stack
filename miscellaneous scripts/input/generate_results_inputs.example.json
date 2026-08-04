@@ -13,6 +13,10 @@
             2016
         ]
     },
+    // only for https://www.theworldavatar.com/kg/ontoexposure/Areal
+    "column_names": [
+        "column1"
+    ],
     // either provide subject_query_file or subject, not both
     "subject_query_file": "subject_query.sparql",
     "subject": "http://subject1",
