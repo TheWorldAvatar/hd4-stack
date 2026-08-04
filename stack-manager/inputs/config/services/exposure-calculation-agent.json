@@ -3,10 +3,11 @@
         "Name": "exposure-calculation-agent",
         "TaskTemplate": {
             "ContainerSpec": {
-                "Image": "ghcr.io/theworldavatar/exposure-calculation-agent:2.0.1",
+                "Image": "ghcr.io/theworldavatar/exposure-calculation-agent:2.3.0",
                 "Env": [
                     "NAMESPACE=hd4",
-                    "DATABASE=postgres"
+                    "DATABASE=postgres",
+                    "VIS_DATA_JSON=/vis_files/config/data.json"
                 ],
                 "Mounts": [
                     {
@@ -18,6 +19,11 @@
                         "Type": "volume",
                         "Source": "logs",
                         "Target": "/root/.twa"
+                    },
+                    {
+                        "Type": "bind",
+                        "Source": "../data/vis/public",
+                        "Target": "/vis_files"
                     }
                 ],
                 "Configs": [
@@ -32,11 +38,17 @@
                     },
                     {
                         "ConfigName": "rdf4j"
+                    },
+                    {
+                        "ConfigName": "geoserver"
                     }
                 ],
                 "Secrets": [
                     {
                         "SecretName": "postgis_password"
+                    },
+                    {
+                        "SecretName": "geoserver_password"
                     }
                 ]
             }

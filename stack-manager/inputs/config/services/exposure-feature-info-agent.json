@@ -3,7 +3,7 @@
         "Name": "exposure-feature-info-agent",
         "TaskTemplate": {
             "ContainerSpec": {
-                "Image": "ghcr.io/theworldavatar/exposure-feature-info-agent:2.1.0",
+                "Image": "ghcr.io/theworldavatar/exposure-feature-info-agent:2.1.1",
                 "Env": [
                     "NAMESPACE=hd4"
                 ],
