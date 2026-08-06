@@ -15,6 +15,12 @@
                 "sridOut": "EPSG:4326",
                 "layerCreationOptions": {"GEOMETRY_NAME": "wkb_geometry"}
             }
+        },
+        {
+            "name": "buildings_layer",
+            "skip": true,
+            "sql": "@/inputs/data/building/buildings_layer/buildings_layer.sql",
+            "type": "vector"
         }
     ]
 }
