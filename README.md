@@ -43,16 +43,29 @@ cd stack-manager
 
 ## Uploading data
 
+Datasets are independent of each other, not all datasets are necessary depending on the objective.
+
 Ensure files are copied into the respective folders, table below shows the files in the HD4 dropbox or download URLs and the location they need to be saved before running the data uploader:
 
-| File in Dropbox or download URL | Location to place the file(s) |
+| File in Dropbox or download URL or instruction | Location to place the file(s) |
 | -------- | ------- |
 | HD4 Programme/WP1/Data/Primary/1-Buildings/Postcode/sgpostcode.geojson | [stack-data-uploader/inputs/data/sgpostcode/postcode](stack-data-uploader/inputs/data/sgpostcode/postcode) |
+| <https://github.com/evansiroky/timezone-boundary-builder/releases> | [stack-data-uploader/inputs/data/sgpostcode/timezone](stack-data-uploader/inputs/data/sgpostcode/timezone) |
+| HD4 Programme/WP1/Data/Processed/1-Green Infrastructure/20260203_NDVI_2016 to 2025/outputs/NDVI_GEE_S2_L1C_P50_masked | [stack-data-uploader/inputs/data/ndvi/raster](stack-data-uploader/inputs/data/ndvi/raster) |
+| HD4 Programme/WP1/Data/Processed/4-Climate/UTCI/UTCI_rasters_4m_monthly | [stack-data-uploader/inputs/data/heat/utci](stack-data-uploader/inputs/data/heat/utci) |
+| SQL dump of buildings_layer from <https://github.com/cambridge-cares/TheWorldAvatar/tree/main/Deploy/stacks/Singapore-sea-level-rise> | [stack-data-uploader/inputs/data/building/sql](stack-data-uploader/inputs/data/building/sql) |
+| sgp_general_2020_geotiff <https://data.humdata.org/dataset/singapore-high-resolution-population-density-maps-demographic-estimates> | [stack-data-uploader/inputs/data/population/raster](stack-data-uploader/inputs/data/population/raster) |
+| Result of [miscellaneous scripts/income_pca.py](miscellaneous%20scripts/income_pca.py) | [stack-data-uploader/inputs/data/socioeconomic/income_pca](stack-data-uploader/inputs/data/socioeconomic/income_pca) |
+| <https://data.gov.sg/datasets/d_4765db0e87b9c86336792efe8a1f7a66/view> | [stack-data-uploader/inputs/data/socioeconomic/planning_area](stack-data-uploader/inputs/data/socioeconomic/planning_area/) |
+| OSM xml data (any reliable method to obtain OSM data) | [stack-data-uploader/inputs/data/routing/routing](stack-data-uploader/inputs/data/routing/routing/) |
+
+Deprecated datasets:
+
+| File in Dropbox or download URL or instruction | Location to place the file(s) |
+| -------- | ------- |
 | <https://data.gov.sg/datasets/d_83bdc9dbb7d05756280e97179ce49d2d/view> | [stack-data-uploader/inputs/data/parks/parks_2016](stack-data-uploader/inputs/data/parks/parks_2016) |
 | <https://data.gov.sg/datasets/d_77d7ec97be83d44f61b85454f844382f/view> | [stack-data-uploader/inputs/data/parks/polygons](stack-data-uploader/inputs/data/parks/polygons) |
 | <https://data.gov.sg/datasets/d_9ec9fe2ff2c6c520dd8679933a4a059a/view> | [stack-data-uploader/inputs/data/parks/parks_2019](stack-data-uploader/inputs/data/parks/parks_2019) |
-| <https://github.com/evansiroky/timezone-boundary-builder/releases> | [stack-data-uploader/inputs/data/sgpostcode/timezone](stack-data-uploader/inputs/data/sgpostcode/timezone) |
-| HD4 Programme/WP1/Data/Processed/1-Green Infrastructure/1-Green Infrastructure/20260203_NDVI_2016 to 2025/outputs/NDVI_GEE_S2_L1C_P50_masked | [stack-data-uploader/inputs/data/ndvi/raster](stack-data-uploader/inputs/data/ndvi/raster) |
 
 Timezone is uploaded as a datasubset of sgpostcode for the sake of performance of federated SPARQL queries, both datasubsets contain the predicate `geo:asWKT`. If multiple Ontop instances contain the same predicate in a query, query speeds will be affected.
 
