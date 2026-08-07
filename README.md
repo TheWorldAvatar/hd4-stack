@@ -47,17 +47,17 @@ Datasets are independent of each other, not all datasets are necessary depending
 
 Ensure files are copied into the respective folders, table below shows the files in the HD4 dropbox or download URLs and the location they need to be saved before running the data uploader:
 
-| File in Dropbox or download URL or instruction | Location to place the file(s) |
-| -------- | ------- |
-| HD4 Programme/WP1/Data/Primary/1-Buildings/Postcode/sgpostcode.geojson | [stack-data-uploader/inputs/data/sgpostcode/postcode](stack-data-uploader/inputs/data/sgpostcode/postcode) |
-| <https://github.com/evansiroky/timezone-boundary-builder/releases> | [stack-data-uploader/inputs/data/sgpostcode/timezone](stack-data-uploader/inputs/data/sgpostcode/timezone) |
-| HD4 Programme/WP1/Data/Processed/1-Green Infrastructure/20260203_NDVI_2016 to 2025/outputs/NDVI_GEE_S2_L1C_P50_masked | [stack-data-uploader/inputs/data/ndvi/raster](stack-data-uploader/inputs/data/ndvi/raster) |
-| HD4 Programme/WP1/Data/Processed/4-Climate/UTCI/UTCI_rasters_4m_monthly | [stack-data-uploader/inputs/data/heat/utci](stack-data-uploader/inputs/data/heat/utci) |
-| SQL dump of buildings_layer from <https://github.com/cambridge-cares/TheWorldAvatar/tree/main/Deploy/stacks/Singapore-sea-level-rise> | [stack-data-uploader/inputs/data/building/sql](stack-data-uploader/inputs/data/building/sql) |
-| sgp_general_2020_geotiff <https://data.humdata.org/dataset/singapore-high-resolution-population-density-maps-demographic-estimates> | [stack-data-uploader/inputs/data/population/raster](stack-data-uploader/inputs/data/population/raster) |
-| Result of [miscellaneous scripts/income_pca.py](miscellaneous%20scripts/income_pca.py) | [stack-data-uploader/inputs/data/socioeconomic/income_pca](stack-data-uploader/inputs/data/socioeconomic/income_pca) |
-| <https://data.gov.sg/datasets/d_4765db0e87b9c86336792efe8a1f7a66/view> | [stack-data-uploader/inputs/data/socioeconomic/planning_area](stack-data-uploader/inputs/data/socioeconomic/planning_area/) |
-| OSM xml data (any reliable method to obtain OSM data) | [stack-data-uploader/inputs/data/routing/routing](stack-data-uploader/inputs/data/routing/routing/) |
+| Dataset | File in Dropbox or download URL or instruction | Location to place the file(s) |
+| -------- | ------- | ------- |
+| Postal code | HD4 Programme/WP1/Data/Primary/1-Buildings/Postcode/sgpostcode.geojson | [stack-data-uploader/inputs/data/sgpostcode/postcode](stack-data-uploader/inputs/data/sgpostcode/postcode) |
+| Timezone | <https://github.com/evansiroky/timezone-boundary-builder/releases> | [stack-data-uploader/inputs/data/sgpostcode/timezone](stack-data-uploader/inputs/data/sgpostcode/timezone) |
+| NDVI | HD4 Programme/WP1/Data/Processed/1-Green Infrastructure/20260203_NDVI_2016 to 2025/outputs/NDVI_GEE_S2_L1C_P50_masked | [stack-data-uploader/inputs/data/ndvi/raster](stack-data-uploader/inputs/data/ndvi/raster) |
+| UTCI | HD4 Programme/WP1/Data/Processed/4-Climate/UTCI/UTCI_rasters_4m_monthly | [stack-data-uploader/inputs/data/heat/utci](stack-data-uploader/inputs/data/heat/utci) |
+| Building footprints | SQL dump of buildings_layer from <https://github.com/cambridge-cares/TheWorldAvatar/tree/main/Deploy/stacks/Singapore-sea-level-rise> | [stack-data-uploader/inputs/data/building/sql](stack-data-uploader/inputs/data/building/sql) |
+| Population count | sgp_general_2020_geotiff <https://data.humdata.org/dataset/singapore-high-resolution-population-density-maps-demographic-estimates> | [stack-data-uploader/inputs/data/population/raster](stack-data-uploader/inputs/data/population/raster) |
+| Income PCA | Result of [miscellaneous scripts/income_pca.py](miscellaneous%20scripts/income_pca.py) | [stack-data-uploader/inputs/data/socioeconomic/income_pca](stack-data-uploader/inputs/data/socioeconomic/income_pca) |
+| Planning area | <https://data.gov.sg/datasets/d_4765db0e87b9c86336792efe8a1f7a66/view> | [stack-data-uploader/inputs/data/socioeconomic/planning_area](stack-data-uploader/inputs/data/socioeconomic/planning_area/) |
+| Road network | OSM xml data (any reliable method to obtain OSM data) | [stack-data-uploader/inputs/data/routing/routing](stack-data-uploader/inputs/data/routing/routing/) |
 
 Deprecated datasets:
 
