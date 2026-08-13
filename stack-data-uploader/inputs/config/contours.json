@@ -1,0 +1,29 @@
+{
+    "name": "contours",
+    "database": "postgres",
+    "workspace": "twa",
+    "skip": false,
+    "datasetDirectory": "contours",
+    "dataSubsets": [
+        {
+            "name": "raw_ndvi",
+            "skip": false,
+            "type": "vector",
+            "subdirectory": "raw_ndvi",
+            "ogr2ogrOptions": {
+                "sridIn": "EPSG:4326"
+            },
+            "geoServerSettings": {
+                "virtualTable": {
+                    "name": "raw_ndvi",
+                    "sql": "SELECT * FROM raw_ndvi",
+                    "geometry": {
+                        "name": "wkb_geometry",
+                        "type": "MultiPolygon",
+                        "srid": 4326
+                    }
+                }
+            }
+        }
+    ]
+}

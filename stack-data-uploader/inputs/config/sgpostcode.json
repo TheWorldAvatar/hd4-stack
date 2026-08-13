@@ -26,9 +26,15 @@
                     }
                 }
             }
+        },
+        {
+            "name": "timezone",
+            "type": "vector",
+            "subdirectory": "timezone"
         }
     ],
     "mappings": [
-        "sgpostcode.obda"
+        "sgpostcode.obda",
+        "timezone.obda"
     ]
 }

@@ -1,0 +1,19 @@
+{
+    "exposure_table": "ndvi_raster",
+    "rdf_type": "https://www.theworldavatar.com/kg/ontoexposure/AreaWeightedSum",
+    "distance": 400,
+    "layer_group_name": "NDVI weighted sum",
+    "host": "http://localhost:3838",
+    "geoserver_layer_name": "exposure_percentile",
+    "geoserver_workspace": "twa",
+    "subject_table": "sgpostcode",
+    "subject_query_file": "subject_query.sparql",
+    "dataset_filter_values": {
+        "year": [
+            2020
+        ]
+    },
+    "url": "http://localhost:3838/exposure-calculation-agent-debug/visualisation/create_layer",
+    "num_bin": 10,
+    "colour_scheme": "Greens"
+}

@@ -1,0 +1,46 @@
+{
+    "name": "accessibility",
+    "database": "postgres",
+    "workspace": "twa",
+    "skip": false,
+    "datasetDirectory": "accessibility",
+    "namespace": {
+        "name": "hd4",
+        "properties": {
+            "com.bigdata.rdf.store.AbstractTripleStore.triplesMode": true,
+            "com.bigdata.rdf.store.AbstractTripleStore.axiomsClass": "com.bigdata.rdf.axioms.NoAxioms"
+        }
+    },
+    "dataSubsets": [
+        {
+            "name": "greenness_accessibility",
+            "skip": false,
+            "type": "vector",
+            "subdirectory": "greenness",
+            "sql": "@/inputs/data/accessibility/sql/update_result_greenness.sql",
+            "ogr2ogrOptions": {
+                "layerCreationOptions": {
+                    "COLUMN_TYPES": "postal_code=character varying"
+                }
+            }
+        },
+        {
+            "name": "sport_accessibility",
+            "skip": false,
+            "type": "vector",
+            "subdirectory": "sport",
+            "sql": "@/inputs/data/accessibility/sql/update_result_sport_facilities.sql",
+            "ogr2ogrOptions": {
+                "layerCreationOptions": {
+                    "COLUMN_TYPES": "postal_code=character varying"
+                }
+            }
+        },
+        {
+            "name": "accessibility_calculation",
+            "type": "rdf",
+            "subdirectory": "rdf",
+            "skip": false
+        }
+    ]
+}

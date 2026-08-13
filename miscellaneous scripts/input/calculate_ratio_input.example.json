@@ -1,0 +1,5 @@
+{
+    "denominator": "downloads/file1.csv",
+    "numerator": "downloads/file2.csv",
+    "output_file": "processed/ratio.csv"
+}

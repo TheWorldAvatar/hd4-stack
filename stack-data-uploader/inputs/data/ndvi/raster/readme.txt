@@ -1,0 +1,1 @@
+Place raster files here. Filenames are expected to have "year" in them, e.g. NDVI_2016.tif

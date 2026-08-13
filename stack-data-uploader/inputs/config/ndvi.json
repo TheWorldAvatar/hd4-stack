@@ -6,51 +6,39 @@
     "datasetDirectory": "ndvi",
     "dataSubsets": [
         {
-            "name": "raw_contour",
-            "skip": false,
+            "name": "greenspace_properties",
+            "skip": true,
             "type": "vector",
-            "subdirectory": "raw_contour",
-            "ogr2ogrOptions": {
-                "sridIn": "EPSG:4326"
-            },
-            "geoServerSettings": {
-                "virtualTable": {
-                    "name": "raw_contour",
-                    "sql": "SELECT * FROM raw_contour",
-                    "geometry": {
-                        "name": "wkb_geometry",
-                        "type": "MultiPolygon",
-                        "srid": 4326
-                    }
-                }
-            }
+            "subdirectory": "greenspace_properties",
+            "sql": "CREATE INDEX IF NOT EXISTS greenspace_properties_year_idx ON greenspace_properties(year)"
         },
         {
-            "name": "raster_2019",
-            "skip": false,
+            "name": "ndvi_raster",
+            "skip": true,
             "type": "raster",
-            "subdirectory": "raster_2019",
-            "geoServerSettings": {
-                "layerSettings": {
-                    "defaultStyle": "raster"
-                }
-            }
-        },
-        {
-            "name": "raster_dump_2019",
-            "skip": false,
-            "type": "vector",
-            "subdirectory": "raster_dump_2019",
-            "sql": "@/inputs/data/ndvi/raster_dump_2019/raster_dump_2019.sql",
+            "subdirectory": "raster",
+            "sql": "@/inputs/data/ndvi/sql/add_year_and_area.sql",
             "additionalMetadata": {
                 "prefixes": {
                     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
                     "exposure": "https://www.theworldavatar.com/kg/ontoexposure/",
-                    "dcterms": "http://purl.org/dc/terms/",
-                    "dcat": "http://www.w3.org/ns/dcat#",
                     "xsd": "http://www.w3.org/2001/XMLSchema#"
                 },
-                "triplePatterns": "?dataSubset exposure:hasValueColumn 'val'; exposure:hasGeometryColumn 'wkb_geometry'; exposure:hasAreaColumn 'area'; a exposure:AreaWeightedDataset; rdfs:label 'NDVI 2019'; dcterms:temporal exposure:ndviperiod2019. exposure:ndviperiod2019 a dcterms:PeriodOfTime; dcat:startDate \"2019-01-01\"^^xsd:date; dcat:endDate \"2019-12-31\"^^xsd:date"
+                "triplePatterns": "?dataSubset exposure:hasGeometryColumn 'rast'; exposure:hasAreaColumn 'area'; rdfs:label 'NDVI'."
+            }
+        },
+        {
+            "name": "ndvi_raster_with_properties",
+            "type": "vector",
+            "skip": true,
+            "sql": "@/inputs/data/ndvi/sql/clip_raster.sql",
+            "additionalMetadata": {
+                "prefixes": {
+                    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+                    "exposure": "https://www.theworldavatar.com/kg/ontoexposure/",
+                    "xsd": "http://www.w3.org/2001/XMLSchema#"
+                },
+                "triplePatterns": "?dataSubset exposure:hasAreaColumn 'area'; rdfs:label 'NDVI with properties'."
             }
         }
     ]

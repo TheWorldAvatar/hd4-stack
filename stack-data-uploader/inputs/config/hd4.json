@@ -1,9 +1,13 @@
 {
     "name": "hd4",
     "externalDatasets": [
-        "parks",
         "sgpostcode",
         "ndvi",
-        "timeseries"
+        "timeseries",
+        "building",
+        "heat",
+        "population",
+        "routing",
+        "socioeconomic"
     ]
 }

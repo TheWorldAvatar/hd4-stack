@@ -1,0 +1,67 @@
+{
+    "input_file": "downloads/utci.csv",
+    "output_file": "processed/heat_release.csv",
+    "number_of_decimals": 3,
+    "key_mappings": [
+        {
+            "d400": "e400"
+        },
+        {
+            "smax": "max",
+            "smin": "min",
+            "smean": "mean"
+        },
+        {
+            "m1": "M01",
+            "m2": "M02",
+            "m3": "M03",
+            "m4": "M04",
+            "m5": "M05",
+            "m6": "M06",
+            "m7": "M07",
+            "m8": "M08",
+            "m9": "M09",
+            "m10": "M10",
+            "m11": "M11",
+            "m12": "M12"
+        }
+    ],
+    "data_dictionaries": [
+        "GCCI1_max_e400_2019_M01",
+        "GCCI2_mean_e400_2019_M01",
+        "GCCI3_min_e400_2019_M01",
+        "GCCI4_max_e400_2019_M02",
+        "GCCI5_mean_e400_2019_M02",
+        "GCCI6_min_e400_2019_M02",
+        "GCCI7_max_e400_2019_M03",
+        "GCCI8_mean_e400_2019_M03",
+        "GCCI9_min_e400_2019_M03",
+        "GCCI10_max_e400_2019_M04",
+        "GCCI11_mean_e400_2019_M04",
+        "GCCI12_min_e400_2019_M04",
+        "GCCI13_max_e400_2019_M05",
+        "GCCI14_mean_e400_2019_M05",
+        "GCCI15_min_e400_2019_M05",
+        "GCCI16_max_e400_2019_M06",
+        "GCCI17_mean_e400_2019_M06",
+        "GCCI18_min_e400_2019_M06",
+        "GCCI19_max_e400_2019_M07",
+        "GCCI20_mean_e400_2019_M07",
+        "GCCI21_min_e400_2019_M07",
+        "GCCI22_max_e400_2019_M08",
+        "GCCI23_mean_e400_2019_M08",
+        "GCCI24_min_e400_2019_M08",
+        "GCCI25_max_e400_2019_M09",
+        "GCCI26_mean_e400_2019_M09",
+        "GCCI27_min_e400_2019_M09",
+        "GCCI28_max_e400_2019_M10",
+        "GCCI29_mean_e400_2019_M10",
+        "GCCI30_min_e400_2019_M10",
+        "GCCI31_max_e400_2019_M11",
+        "GCCI32_mean_e400_2019_M11",
+        "GCCI33_min_e400_2019_M11",
+        "GCCI34_max_e400_2019_M12",
+        "GCCI35_mean_e400_2019_M12",
+        "GCCI36_min_e400_2019_M12"
+    ]
+}

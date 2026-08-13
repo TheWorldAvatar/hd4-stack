@@ -1,0 +1,13 @@
+{
+    "exposure_table": "ndvi_raster",
+    "rdf_type": "https://www.theworldavatar.com/kg/ontoexposure/AreaWeightedSum",
+    "dataset_filter_values": {
+        "year": [
+            2016
+        ]
+    },
+    "subject_query_file": "subject_query.sparql",
+    "subject_label_query_file": "subject_label_query.sparql",
+    "url": "http://localhost:3838/exposure-calculation-agent/csv_export/non_trajectory",
+    "output_file": "downloads/area_weighted_ndvi.csv"
+}

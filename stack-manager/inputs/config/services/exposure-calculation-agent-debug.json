@@ -1,18 +1,24 @@
 {
     "ServiceSpec": {
-        "Name": "exposure-calculation-agent",
+        "Name": "exposure-calculation-agent-debug",
         "TaskTemplate": {
             "ContainerSpec": {
                 "Image": "exposure-calculation-agent-debug:latest",
                 "Env": [
                     "NAMESPACE=hd4",
-                    "DATABASE=postgres"
+                    "DATABASE=postgres",
+                    "VIS_DATA_JSON=/vis_files/config/data.json"
                 ],
                 "Mounts": [
                     {
                         "Type": "volume",
                         "Source": "exposure-calculation-agent",
                         "Target": "/app/queries"
+                    },
+                    {
+                        "Type": "bind",
+                        "Source": "../data/vis/public",
+                        "Target": "/vis_files"
                     }
                 ],
                 "Configs": [
@@ -27,11 +33,17 @@
                     },
                     {
                         "ConfigName": "rdf4j"
+                    },
+                    {
+                        "ConfigName": "geoserver"
                     }
                 ],
                 "Secrets": [
                     {
                         "SecretName": "postgis_password"
+                    },
+                    {
+                        "SecretName": "geoserver_password"
                     }
                 ]
             }
@@ -50,7 +62,7 @@
     "endpoints": {
         "rest": {
             "url": "http://localhost:5000/",
-            "externalPath": "/exposure-calculation-agent/"
+            "externalPath": "/exposure-calculation-agent-debug/"
         }
     }
 }

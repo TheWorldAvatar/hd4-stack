@@ -1,0 +1,21 @@
+{
+    "name": "sport_facilities",
+    "database": "postgres",
+    "workspace": "twa",
+    "skip": false,
+    "datasetDirectory": "sport_facilities",
+    "dataSubsets": [
+        {
+            "name": "sport_facilities",
+            "skip": false,
+            "type": "vector",
+            "subdirectory": "sub",
+            "additionalMetadata": {
+                "prefixes": {
+                    "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
+                },
+                "triplePatterns": "?dataSubset rdfs:label 'Sport facilities'."
+            }
+        }
+    ]
+}

@@ -1,0 +1,1 @@
+place .osm file here, the data uploader uses mapconfig.xml to extract the route network

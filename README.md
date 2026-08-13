@@ -13,22 +13,24 @@ The following credential files are required in [stack-manager\inputs\secrets](st
 - mapbox_username
 - postgis_password
 
-## Contour generation
+## Contour generation (optional)
 
-A script is provided to generate a GeoJSON contour of a tif file for visualisation. The GeoJSON file can be copied into [/stack-data-uploader/inputs/data/ndvi/raw_contour/](/stack-data-uploader/inputs/data/ndvi/raw_contour/) for upload.
+A script is provided to generate GeoJSON contours of raster files for visualisation. The script reads from the folder [/stack-data-uploader/inputs/data/ndvi/raster/](/stack-data-uploader/inputs/data/ndvi/raster/).
 
-To use the script (be sure to replace command with file name):
+To use the script:
 
 ```bash
 cd miscellaneous\ scripts/
-python generate_contour_from_tif.py [REPLACE_WITH_TIF_FILENAME]
+python generate_contour_from_tif.py
 ```
+
+The GeoJSON files can be copied into [/stack-data-uploader/inputs/data/contours/raw_ndvi/](/stack-data-uploader/inputs/data/contours/raw_ndvi/) for upload.
 
 ## Setting up visualisation
 
-1) Populate [stack-manager\inputs\data\vis\public\images](stack-manager\inputs\data\vis\public\images) and [stack-manager\inputs\data\vis\public\optional-pages](stack-manager\inputs\data\vis\public\optional-pages) with files from <https://github.com/TheWorldAvatar/viz/tree/main/code/public>.
+1) Populate [stack-manager/inputs/data/vis/public/images](stack-manager/inputs/data/vis/public/images) and [stack-manager/inputs/data/vis/public/optional-pages](stack-manager/inputs/data/vis/public/optional-pages) with files from <https://github.com/TheWorldAvatar/viz/tree/main/code/public>.
 
-2) Modify URLs of GeoServer layers in [stack-manager\inputs\data\vis\public\config\data.json](stack-manager\inputs\data\vis\public\config\data.json) depending on deployment settings.
+2) Modify URLs of GeoServer layers in [stack-manager/inputs/data/vis/public/config/data.json](stack-manager/inputs/data/vis/public/config/data.json) depending on deployment settings.
 
 ## Spin up the stack
 
@@ -41,17 +43,33 @@ cd stack-manager
 
 ## Uploading data
 
+Datasets are independent of each other, not all datasets are necessary depending on the objective.
+
 Ensure files are copied into the respective folders, table below shows the files in the HD4 dropbox or download URLs and the location they need to be saved before running the data uploader:
 
-| File in Dropbox or download URL    | Location to place the file(s) |
-| --------| ------- |
-| HD4 Programme/WP1/Data/Primary/1-Buildings/Postcode/sgpostcode.geojson | [stack-data-uploader/inputs/data/sgpostcode/postcode](stack-data-uploader/inputs/data/sgpostcode/postcode)    |
-| <https://data.gov.sg/datasets/d_83bdc9dbb7d05756280e97179ce49d2d/view> | [stack-data-uploader/inputs/data/parks/parks_2016](stack-data-uploader/inputs/data/parks/parks_2016)    |
-| <https://data.gov.sg/datasets/d_77d7ec97be83d44f61b85454f844382f/view> | [stack-data-uploader/inputs/data/parks/polygons](stack-data-uploader/inputs/data/parks/polygons)    |
-| <https://data.gov.sg/datasets/d_9ec9fe2ff2c6c520dd8679933a4a059a/view> | [stack-data-uploader/inputs/data/parks/parks_2019](stack-data-uploader/inputs/data/parks/parks_2019)    |
-| HD4 Programme/WP1/Data/Processed/1-Green Infrastructure/20250618_NDVIs_reclassified_raster/NDVI_S2_sg_2019_95th_continuousValueAbove02.tif | [stack-data-uploader/inputs/data/ndvi/raster_2019](stack-data-uploader/inputs/data/ndvi/raster_2019)    |
+| Dataset | File in Dropbox or download URL or instruction | Location to place the file(s) |
+| -------- | ------- | ------- |
+| Postal code | HD4 Programme/WP1/Data/Primary/1-Buildings/Postcode/sgpostcode.geojson | [stack-data-uploader/inputs/data/sgpostcode/postcode](stack-data-uploader/inputs/data/sgpostcode/postcode) |
+| Timezone | <https://github.com/evansiroky/timezone-boundary-builder/releases> | [stack-data-uploader/inputs/data/sgpostcode/timezone](stack-data-uploader/inputs/data/sgpostcode/timezone) |
+| NDVI | HD4 Programme/WP1/Data/Processed/1-Green Infrastructure/20260203_NDVI_2016 to 2025/outputs/NDVI_GEE_S2_L1C_P50_masked | [stack-data-uploader/inputs/data/ndvi/raster](stack-data-uploader/inputs/data/ndvi/raster) |
+| UTCI | HD4 Programme/WP1/Data/Processed/4-Climate/UTCI/UTCI_rasters_4m_monthly | [stack-data-uploader/inputs/data/heat/utci](stack-data-uploader/inputs/data/heat/utci) |
+| Building footprints | SQL dump of buildings_layer from <https://github.com/cambridge-cares/TheWorldAvatar/tree/main/Deploy/stacks/Singapore-sea-level-rise>, can also be substituted with any polygon dataset | [stack-data-uploader/inputs/data/building/sql](stack-data-uploader/inputs/data/building/sql) |
+| Population count | sgp_general_2020_geotiff <https://data.humdata.org/dataset/singapore-high-resolution-population-density-maps-demographic-estimates> | [stack-data-uploader/inputs/data/population/raster](stack-data-uploader/inputs/data/population/raster) |
+| Income PCA | Result of [miscellaneous scripts/income_pca.py](miscellaneous%20scripts/income_pca.py) | [stack-data-uploader/inputs/data/socioeconomic/income_pca](stack-data-uploader/inputs/data/socioeconomic/income_pca) |
+| Planning area | <https://data.gov.sg/datasets/d_4765db0e87b9c86336792efe8a1f7a66/view> | [stack-data-uploader/inputs/data/socioeconomic/planning_area](stack-data-uploader/inputs/data/socioeconomic/planning_area/) |
+| Road network | OSM xml data (any reliable method to obtain OSM data) | [stack-data-uploader/inputs/data/routing/routing](stack-data-uploader/inputs/data/routing/routing/) |
 
-If visualisation of NDVI is desired, be sure to generate the necessary file in [Contour generation](#contour-generation).
+Deprecated datasets:
+
+| File in Dropbox or download URL or instruction | Location to place the file(s) |
+| -------- | ------- |
+| <https://data.gov.sg/datasets/d_83bdc9dbb7d05756280e97179ce49d2d/view> | [stack-data-uploader/inputs/data/parks/parks_2016](stack-data-uploader/inputs/data/parks/parks_2016) |
+| <https://data.gov.sg/datasets/d_77d7ec97be83d44f61b85454f844382f/view> | [stack-data-uploader/inputs/data/parks/polygons](stack-data-uploader/inputs/data/parks/polygons) |
+| <https://data.gov.sg/datasets/d_9ec9fe2ff2c6c520dd8679933a4a059a/view> | [stack-data-uploader/inputs/data/parks/parks_2019](stack-data-uploader/inputs/data/parks/parks_2019) |
+
+Timezone is uploaded as a datasubset of sgpostcode for the sake of performance of federated SPARQL queries, both datasubsets contain the predicate `geo:asWKT`. If multiple Ontop instances contain the same predicate in a query, query speeds will be affected.
+
+If visualisation of NDVI is desired, be sure to generate the necessary file in [Contour generation](#contour-generation-optional).
 
 ```bash
 cd stack-data-uploader
@@ -110,11 +128,29 @@ After that exposures can be calculated using the exposure calculation agent <htt
 
 GeoServer layers and the necessary config in the visualisation data.json can be created using the TripLayerGenerator (<https://github.com/TheWorldAvatar/TripLayerGenerator>), trips are optional for visualisation.
 
+## Generating and downloading exposure calculation data
+
+Script to start a batch of simulations: [miscellaneous scripts/generate_results.py](/miscellaneous%20scripts/generate_results.py)
+
+Input file required: miscellaneous scripts/input/generate_results_inputs.json, example - [miscellaneous scripts/input/generate_results_inputs.example.json](miscellaneous%20scripts/input/generate_results_inputs.example.json).
+
+Script to download results:
+
+[miscellaneous scripts/download_results.py](/miscellaneous%20scripts/download_results.py)
+
+Input file required: miscellaneous scripts/input/download_results_inputs.json, example - [miscellaneous scripts/input/download_results_inputs.example.json](miscellaneous%20scripts/input/download_results_inputs.example.json).
+
+Script to release data from WP1:
+
+[miscellaneous scripts/data_release.py](/miscellaneous%20scripts/data_release.py)
+
+Input file required: miscellaneous scripts/input/data_release_inputs.json, example - [miscellaneous scripts/input/data_release_inputs.example.json](miscellaneous%20scripts/input/data_release_inputs.example.json).
+
 ## HTTPS setup
 
 Instructions are adapted from <https://mindsers.blog/en/post/https-using-nginx-certbot-docker/>. The committed files [https/](https/) show the final states, it is necessary to make modifications to the files at least during the initial setup.
 
-1) [https\nginx\conf\default.conf](https\nginx\conf\default.conf) should only contain the following portion
+1) [https/nginx/conf/default.conf](https/nginx/conf/default.conf) should only contain the following portion
 
     ```text
     server {

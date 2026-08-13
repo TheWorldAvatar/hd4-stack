@@ -1,0 +1,4 @@
+@prefix exposure: <https://www.theworldavatar.com/kg/ontoexposure/> .
+
+<https://www.theworldavatar.com/kg/calculation/cycling> a exposure:Cycling .
+<https://www.theworldavatar.com/kg/calculation/walking> a exposure:Walking .

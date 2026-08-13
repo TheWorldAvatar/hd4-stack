@@ -1,0 +1,1 @@
+clip_raster.sql produces a raster table with additional properties derived from the greenspace_properties vector dataset. Make sure the column names in the SQL script match the ones in the table.

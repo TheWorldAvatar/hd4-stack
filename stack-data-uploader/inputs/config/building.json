@@ -1,0 +1,26 @@
+{
+    "name": "building",
+    "database": "postgres",
+    "workspace": "twa",
+    "skip": false,
+    "datasetDirectory": "building",
+    "dataSubsets": [
+        {
+            "name": "gvi",
+            "skip": false,
+            "type": "vector",
+            "subdirectory": "gvi",
+            "ogr2ogrOptions": {
+                "sridIn": "EPSG:3414",
+                "sridOut": "EPSG:4326",
+                "layerCreationOptions": {"GEOMETRY_NAME": "wkb_geometry"}
+            }
+        },
+        {
+            "name": "buildings_layer",
+            "skip": true,
+            "sql": "@/inputs/data/building/buildings_layer/buildings_layer.sql",
+            "type": "vector"
+        }
+    ]
+}

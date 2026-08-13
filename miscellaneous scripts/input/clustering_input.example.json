@@ -1,0 +1,30 @@
+{
+    "url": "http://localhost:3838/exposure-calculation-agent-debug/stats/clustering",
+    "subject_query_file": "subject_query.sparql",
+    "n_clusters": 5,
+    "clustering_data": [
+        {
+            "exposure_table": "ndvi_raster",
+            "rdf_type": "https://www.theworldavatar.com/kg/ontoexposure/RasterArea",
+            "distance": 400,
+            "dataset_filter_values": {
+                "year": [
+                    2019
+                ]
+            }
+        },
+        {
+            "exposure_table": "utci_raster",
+            "rdf_type": "https://www.theworldavatar.com/kg/ontoexposure/RasterAverage",
+            "distance": 400,
+            "dataset_filter_values": {
+                "month": [
+                    5
+                ],
+                "stat": [
+                    "mean"
+                ]
+            }
+        }
+    ]
+}
