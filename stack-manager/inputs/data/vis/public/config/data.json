@@ -2,6 +2,93 @@
     "name": "All Data",
     "groups": [
         {
+            "name": "NDVI",
+            "expanded": true,
+            "search": {
+                "year": [
+                    2016,
+                    2017,
+                    2018,
+                    2019,
+                    2020,
+                    2021,
+                    2022,
+                    2023,
+                    2024,
+                    2025
+                ]
+            },
+            "sources": [
+                {
+                    "id": "ndvi-source",
+                    "type": "vector",
+                    "tiles": [
+                        "http://localhost:3838/geoserver/twa/wms?service=WMS&version=1.1.0&request=GetMap&layers=twa:raw_ndvi&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=application/vnd.mapbox-vector-tile"
+                    ]
+                }
+            ],
+            "layers": [
+                {
+                    "id": "ndvi-layer",
+                    "name": "NDVI",
+                    "source": "ndvi-source",
+                    "source-layer": "raw_ndvi",
+                    "type": "fill",
+                    "layout": {
+                        "visibility": "none"
+                    },
+                    "paint": {
+                        "fill-outline-color": [
+                            "get",
+                            "stroke"
+                        ],
+                        "fill-color": [
+                            "get",
+                            "fill"
+                        ],
+                        "fill-opacity": 0.5
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Postcode",
+            "expanded": true,
+            "stack": "http://localhost:3838/exposure-feature-info-agent",
+            "sources": [
+                {
+                    "id": "postcode-source",
+                    "type": "vector",
+                    "tiles": [
+                        "http://localhost:3838/geoserver/twa/wms?service=WMS&version=1.1.0&request=GetMap&layers=twa:sgpostcode&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=application/vnd.mapbox-vector-tile"
+                    ]
+                }
+            ],
+            "layers": [
+                {
+                    "id": "postcode-layer",
+                    "name": "Postcodes",
+                    "source": "postcode-source",
+                    "source-layer": "sgpostcode",
+                    "type": "circle",
+                    "layout": {
+                        "visibility": "none"
+                    },
+                    "paint": {
+                        "circle-color": "#000000",
+                        "circle-radius": 5,
+                        "circle-opacity": 0.8
+                    },
+                    "highlight": {
+                        "highlightFeatureId": "ogc_fid",
+                        "paint": {
+                            "circle-color": "red"
+                        }
+                    }
+                }
+            ]
+        },
+        {
             "name": "Greenspace",
             "expanded": true,
             "sources": [
@@ -71,87 +158,6 @@
                     "paint": {
                         "fill-color": "#50723C",
                         "fill-opacity": 0.8
-                    }
-                }
-            ]
-        },
-        {
-            "name": "NDVI",
-            "expanded": true,
-            "sources": [
-                {
-                    "id": "ndvi-source",
-                    "type": "vector",
-                    "tiles": [
-                        "http://localhost:3838/geoserver/twa/wms?service=WMS&version=1.1.0&request=GetMap&layers=twa:raw_ndvi&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=application/vnd.mapbox-vector-tile"
-                    ]
-                }
-            ],
-            "layers": [
-                {
-                    "id": "ndvi-layer",
-                    "name": "NDVI (2016)",
-                    "source": "ndvi-source",
-                    "source-layer": "raw_ndvi",
-                    "type": "fill",
-                    "layout": {
-                        "visibility": "none"
-                    },
-                    "paint": {
-                        "fill-outline-color": [
-                            "get",
-                            "stroke"
-                        ],
-                        "fill-color": [
-                            "get",
-                            "fill"
-                        ],
-                        "fill-opacity": 0.5
-                    },
-                    "filter": [
-                        "==",
-                        [
-                            "get",
-                            "year"
-                        ],
-                        2016
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "Postcode",
-            "expanded": true,
-            "stack": "http://localhost:3838/exposure-feature-info-agent",
-            "sources": [
-                {
-                    "id": "postcode-source",
-                    "type": "vector",
-                    "tiles": [
-                        "http://localhost:3838/geoserver/twa/wms?service=WMS&version=1.1.0&request=GetMap&layers=twa:sgpostcode&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=application/vnd.mapbox-vector-tile"
-                    ]
-                }
-            ],
-            "layers": [
-                {
-                    "id": "postcode-layer",
-                    "name": "Postcodes",
-                    "source": "postcode-source",
-                    "source-layer": "sgpostcode",
-                    "type": "circle",
-                    "layout": {
-                        "visibility": "none"
-                    },
-                    "paint": {
-                        "circle-color": "#000000",
-                        "circle-radius": 5,
-                        "circle-opacity": 0.8
-                    },
-                    "highlight": {
-                        "highlightFeatureId": "ogc_fid",
-                        "paint": {
-                            "circle-color": "red"
-                        }
                     }
                 }
             ]
