@@ -54,7 +54,7 @@
         {
             "name": "Postcode",
             "expanded": true,
-            "stack": "http://localhost:3838/exposure-feature-info-agent",
+            "stack": "http://localhost:3838/exposure-feature-info-agent/sql",
             "sources": [
                 {
                     "id": "postcode-source",
