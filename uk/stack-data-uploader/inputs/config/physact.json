@@ -1,0 +1,35 @@
+{
+  "database": "postgres",
+  "workspace": "the_world_avatar",
+  "datasetDirectory": "physact",
+  "skip": false,
+  "dataSubsets": [
+    {
+      "type": "vector",
+      "skip": false,
+      "schema": "public",
+      "table": "physact",
+      "subdirectory": "vector",
+      "ogr2ogrOptions": {
+        "layerCreationOptions": {
+          "GEOMETRY_NAME": "wkb_geometry"
+        },
+        "sridIn": "EPSG:27700",
+        "sridOut": "EPSG:4326",
+        "inputDatasetOpenOptions": {
+          "X_POSSIBLE_NAMES": "feature_easting",
+          "Y_POSSIBLE_NAMES": "feature_northing"
+        }
+      },
+      "additionalMetadata": {
+        "prefixes": {
+          "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
+        },
+        "triplePatterns": "?dataSubset rdfs:label 'Physical activity venues'."
+      }
+    }
+  ],
+  "mappings": [
+    "physact.obda"
+  ]
+}

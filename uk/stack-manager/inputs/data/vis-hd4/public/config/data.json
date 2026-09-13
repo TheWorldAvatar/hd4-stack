@@ -1,0 +1,199 @@
+{
+    "name": "All Layers",
+    "groups": [
+            {
+                "name": "Points of Interest",
+                "stack": "http://localhost:3838",
+                "sources": [
+                    {
+                        "id": "poi-fast-food-outlets-source",
+                        "type": "geojson",
+                        "data": "http://localhost:3838/geoserver/the_world_avatar/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=the_world_avatar%3Afastfoodoutlets&&outputFormat=application%2Fjson",
+                        "cluster": true,
+                        "clusterMaxZoom": 14,
+                        "clusterRadius": 50
+                    },
+                    {
+                        "id": "poi-supermarkets-source",
+                        "type": "geojson",
+                        "data": "http://localhost:3838/geoserver/the_world_avatar/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=the_world_avatar%3Asupermarkets&&outputFormat=application%2Fjson",
+                        "cluster": true,
+                        "clusterMaxZoom": 14,
+                        "clusterRadius": 50
+                    },
+                    {
+                        "id": "poi-physical-activity-source",
+                        "type": "geojson",
+                        "data": "http://localhost:3838/geoserver/the_world_avatar/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=the_world_avatar%3Aphysact&&outputFormat=application%2Fjson",
+                        "cluster": true,
+                        "clusterMaxZoom": 14,
+                        "clusterRadius": 50
+                    }
+                ],
+                "layers": [
+                    {
+                        "id": "poi-fast-food-outlets",
+                        "name": "Fast food outlets",
+                        "source": "poi-fast-food-outlets-source",
+                        "type": "symbol",
+                        "filter": ["!", ["has", "point_count"]],
+                        "order": 1801,
+                        "layout": {
+                            "visibility": "none",
+                            "icon-image": "takeaway",
+                            "icon-size": ["interpolate", ["linear"], ["zoom"], 12, 0.375, 20, 0.4875],
+                            "icon-allow-overlap": true,
+                            "icon-ignore-placement": true
+                        }
+                    },
+                    {
+                        "id": "poi-fast-food-outlets-cluster",
+                        "name": "Fast food outlets",
+                        "source": "poi-fast-food-outlets-source",
+                        "type": "symbol",
+                        "filter": ["has", "point_count"],
+                        "order": 1802,
+                        "layout": {
+                            "visibility": "none",
+                            "icon-image": "takeaway_circle",
+                            "icon-size": ["interpolate", ["linear"], ["zoom"], 12, 0.3875, 20, 0.4875],
+                            "icon-allow-overlap": true,
+                            "icon-ignore-placement": true,
+                            "text-field": "{point_count_abbreviated}",
+                            "text-font": ["Arial Unicode MS Regular"],
+                            "text-size": 9,
+                            "text-anchor": "center",
+                            "text-offset": [0, 0]
+                        }
+                    },
+                    {
+                        "id": "poi-supermarkets",
+                        "name": "Supermarkets",
+                        "source": "poi-supermarkets-source",
+                        "type": "symbol",
+                        "filter": ["!", ["has", "point_count"]],
+                        "order": 1811,
+                        "layout": {
+                            "visibility": "none",
+                            "icon-image": "supermarket",
+                            "icon-size": ["interpolate", ["linear"], ["zoom"], 12, 0.375, 20, 0.4875],
+                            "icon-allow-overlap": true,
+                            "icon-ignore-placement": true
+                        }
+                    },
+                    {
+                        "id": "poi-supermarkets-cluster",
+                        "name": "Supermarkets",
+                        "source": "poi-supermarkets-source",
+                        "type": "symbol",
+                        "filter": ["has", "point_count"],
+                        "order": 1812,
+                        "layout": {
+                            "visibility": "none",
+                            "icon-image": "supermarket_circle",
+                            "icon-size": ["interpolate", ["linear"], ["zoom"], 12, 0.3875, 20, 0.4875],
+                            "icon-allow-overlap": true,
+                            "icon-ignore-placement": true,
+                            "text-field": "{point_count_abbreviated}",
+                            "text-font": ["Arial Unicode MS Regular"],
+                            "text-size": 9,
+                            "text-anchor": "center",
+                            "text-offset": [0, 0]
+                        }
+                    },
+                    {
+                        "id": "poi-physical-activity",
+                        "name": "Physical activity venues",
+                        "source": "poi-physical-activity-source",
+                        "type": "symbol",
+                        "filter": ["!", ["has", "point_count"]],
+                        "order": 1821,
+                        "layout": {
+                            "visibility": "none",
+                            "icon-image": "sports",
+                            "icon-size": ["interpolate", ["linear"], ["zoom"], 12, 0.375, 20, 0.4875],
+                            "icon-allow-overlap": true,
+                            "icon-ignore-placement": true
+                        }
+                    },
+                    {
+                        "id": "poi-physical-activity-cluster",
+                        "name": "Physical activity venues",
+                        "source": "poi-physical-activity-source",
+                        "type": "symbol",
+                        "filter": ["has", "point_count"],
+                        "order": 1822,
+                        "layout": {
+                            "visibility": "none",
+                            "icon-image": "sports_circle",
+                            "icon-size": ["interpolate", ["linear"], ["zoom"], 12, 0.3875, 20, 0.4875],
+                            "icon-allow-overlap": true,
+                            "icon-ignore-placement": true,
+                            "text-field": "{point_count_abbreviated}",
+                            "text-font": ["Arial Unicode MS Regular"],
+                            "text-size": 9,
+                            "text-anchor": "center",
+                            "text-offset": [0, 0]
+                        }
+                    }
+                ]
+        },
+        {
+            "name": "Greenspace",
+            "groups": [
+                {   
+                    "name": "Ordnance Survey",
+                    "stack": "http://localhost:3838",
+                    "sources": [
+                        {
+                            "id": "greenspace-site-source",
+                            "type": "raster",
+                            "tiles": [
+                                "http://localhost:3838/geoserver/the_world_avatar/wms?service=WMS&version=1.1.0&request=GetMap&layers=the_world_avatar:greenspace_sites&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&transparent=true&format=image/png"
+                            ]
+                        },
+                        {
+                            "id": "greenspace-accesspoint-source",
+                            "type": "vector",
+                            "cluster": true,
+                            "clusterMaxZoom": 14,
+                            "clusterRadius": 100,
+                            "tiles": [
+                                "http://localhost:3838/geoserver/ows?service=WMS&version=1.1.0&request=GetMap&layers=the_world_avatar:greenspace_accesspoints&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=application/vnd.mapbox-vector-tile"
+                            ]
+                        }
+                    ],
+                    "layers": [
+                        {
+                            "id": "greenspace-site-layer",
+                            "name": "Sites",
+                            "source": "greenspace-site-source",
+                            "type": "raster",
+                            "minzoom": 4,
+                            "order": 1901,
+                            "layout": {
+                                "visibility": "none"
+                            }
+                        },
+			{
+                            "id": "greenspace-accesspoint-layer",
+                            "name": "Access points",
+                            "source": "greenspace-accesspoint-source",
+                            "source-layer": "greenspace_accesspoints",
+                            "type": "symbol",
+                            "minzoom": 6,
+                            "order": 1001,
+                            "layout": {
+                                "visibility": "none",
+                                "icon-image": "greenspaceaccesspoint",
+                                "icon-size": 0.2,
+                                "icon-allow-overlap": true,
+                                "icon-ignore-placement": true
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

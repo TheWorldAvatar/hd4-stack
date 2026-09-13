@@ -1,0 +1,71 @@
+{
+    "database": "postgres",
+    "workspace": "the_world_avatar",
+    "datasetDirectory": "greenspace",
+    "dataSubsets": [
+        {
+            "type": "vector",
+            "skip": false,
+            "schema": "public",
+            "table": "greenspace_sites",
+            "subdirectory": "sites",
+            "ogr2ogrOptions": {
+                "otherOptions": {
+                    "-nlt": ["MULTIPOLYGON"]
+                }
+            },
+            "geoServerSettings": {
+                "virtualTable": {
+                    "name": "greenspace_sites_extended",
+                    "sql": "SELECT *, \"distName1\" AS \"name\" FROM greenspace_sites",
+                    "escapeSql": false,
+                    "geometry": {
+                        "name": "wkb_geometry",
+                        "type": "MultiPolygon",
+                        "srid": 27700
+                    }
+                }
+            },
+            "additionalMetadata": {
+                "prefixes": {
+                    "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
+                },
+                "triplePatterns": "?dataSubset rdfs:label 'Greenspace areas'."
+            }
+        },
+        {
+            "type": "vector",
+            "skip": false,
+            "schema": "public",
+            "table": "greenspace_accesspoints",
+            "subdirectory": "accesspoints",
+            "ogr2ogrOptions": {
+                "otherOptions": {
+                    "-nlt": ["POINT"]
+                }
+            },
+            "geoServerSettings": {
+                "virtualTable": {
+                    "name": "greenspace_accesspoints_extended",
+                    "sql": "SELECT *, \"accessType\" AS \"name\" FROM greenspace_accesspoints",
+                    "escapeSql": false,
+                    "geometry": {
+                        "name": "wkb_geometry",
+                        "type": "Point",
+                        "srid": 27700
+                    }
+                }
+            },
+            "additionalMetadata": {
+                "prefixes": {
+                    "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
+                },
+                "triplePatterns": "?dataSubset rdfs:label 'Greenspace access points'."
+            }
+        }
+    ],
+    "mappings": [
+        "greenspace.obda"
+    ]
+}
+

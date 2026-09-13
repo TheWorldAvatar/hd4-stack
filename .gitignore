@@ -60,3 +60,6 @@ dist/
 
 # Windows-specific files:
 Thumbs.db
+
+# Project-specific ignore:
+trajectory_*.csv
