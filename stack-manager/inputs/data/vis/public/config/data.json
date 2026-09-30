@@ -52,6 +52,63 @@
             ]
         },
         {
+            "name": "UTCI",
+            "expanded": true,
+            "search": {
+                "month": [
+                    "January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December"
+                ],
+                "stat": [
+                    "min",
+                    "max",
+                    "mean"
+                ]
+            },
+            "sources": [
+                {
+                    "id": "utci-source",
+                    "type": "vector",
+                    "tiles": [
+                        "http://localhost:3838/geoserver/twa/wms?service=WMS&version=1.1.0&request=GetMap&layers=twa:utci_contour&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=application/vnd.mapbox-vector-tile"
+                    ]
+                }
+            ],
+            "layers": [
+                {
+                    "id": "utci-layer",
+                    "name": "UTCI (2019)",
+                    "source": "utci-source",
+                    "source-layer": "utci_contour",
+                    "type": "fill",
+                    "layout": {
+                        "visibility": "none"
+                    },
+                    "paint": {
+                        "fill-outline-color": [
+                            "get",
+                            "stroke"
+                        ],
+                        "fill-color": [
+                            "get",
+                            "fill"
+                        ],
+                        "fill-opacity": 0.5
+                    }
+                }
+            ]
+        },
+        {
             "name": "Postcode",
             "expanded": true,
             "stack": "http://localhost:3838/exposure-feature-info-agent/sql",

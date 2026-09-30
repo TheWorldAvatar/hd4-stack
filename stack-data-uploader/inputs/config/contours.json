@@ -7,7 +7,7 @@
     "dataSubsets": [
         {
             "name": "raw_ndvi",
-            "skip": false,
+            "skip": true,
             "type": "vector",
             "subdirectory": "raw_ndvi",
             "ogr2ogrOptions": {
@@ -17,6 +17,26 @@
                 "virtualTable": {
                     "name": "raw_ndvi",
                     "sql": "SELECT * FROM raw_ndvi",
+                    "geometry": {
+                        "name": "wkb_geometry",
+                        "type": "MultiPolygon",
+                        "srid": 4326
+                    }
+                }
+            }
+        },
+        {
+            "name": "utci_contour",
+            "skip": true,
+            "type": "vector",
+            "subdirectory": "utci_contour",
+            "ogr2ogrOptions": {
+                "sridIn": "EPSG:4326"
+            },
+            "geoServerSettings": {
+                "virtualTable": {
+                    "name": "utci_contour",
+                    "sql": "SELECT * FROM utci_contour",
                     "geometry": {
                         "name": "wkb_geometry",
                         "type": "MultiPolygon",
