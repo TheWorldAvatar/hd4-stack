@@ -7,7 +7,7 @@
     "dataSubsets": [
         {
             "name": "utci_raster",
-            "skip": false,
+            "skip": true,
             "type": "raster",
             "subdirectory": "utci",
             "sql": "@/inputs/data/heat/sql/add_month.sql",
@@ -21,6 +21,24 @@
                     "xsd": "http://www.w3.org/2001/XMLSchema#"
                 },
                 "triplePatterns": "?dataSubset rdfs:label 'UTCI'."
+            }
+        },
+        {
+            "name": "heat_index_raster",
+            "skip": true,
+            "type": "raster",
+            "subdirectory": "heat_index",
+            "sql": "@/inputs/data/heat/sql/add_year_month_and_stat_heat_index.sql",
+            "gdalTranslateOptions": {
+                "sridOut": "EPSG:4326"
+            },
+            "additionalMetadata": {
+                "prefixes": {
+                    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+                    "exposure": "https://www.theworldavatar.com/kg/ontoexposure/",
+                    "xsd": "http://www.w3.org/2001/XMLSchema#"
+                },
+                "triplePatterns": "?dataSubset rdfs:label 'Heat index'."
             }
         }
     ]
