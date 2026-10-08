@@ -68,17 +68,22 @@ def main(raster_file):
     _, ax = plt.subplots()
 
     contourf = ax.contourf(x_matrix, y_matrix, result_matrix,
-                           levels=contour_level, cmap=plt.cm.jet)
+                           levels=contour_level, cmap=plt.cm.Greens)
     plt.colorbar(contourf)
     ax.remove()
 
     geojsonstring = geojsoncontour.contourf_to_geojson(
         contourf=contourf, fill_opacity=0.5)
+    parsed_geojson = json.loads(geojsonstring)
+    for feature in parsed_geojson.get("features", []):
+        properties = feature.get("properties", {})
+        if "title" in properties:
+            properties["name"] = properties.pop("title")
+    geojsonstring = json.dumps(parsed_geojson)
 
     # add property to each feature if year is present
     if year:
         colorbar_filename = f"colorbar_{year}.png"
-        parsed_geojson = json.loads(geojsonstring)
 
         for feature in parsed_geojson.get("features", []):
             feature["properties"]["year"] = year
