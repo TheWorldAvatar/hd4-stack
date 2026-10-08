@@ -76,7 +76,20 @@ cd stack-data-uploader
 ./stack.sh start hd4
 ```
 
-## Restarting ontop container (temporary workaround)
+## Requirements for federation to work
+
+### Remove mappings from main Ontop container
+
+Because the main Ontop container is used in this stack, federation results will contain duplicates if the mappings uploaded by the stack data uploader are not removed from the mapping in the main Ontop container.
+
+### Required Blazegraph namespaces
+
+Make sure these namespaces are there (hd4 is supposed to be created automatically by running the calculations):
+
+- osm
+- hd4
+
+### Restarting ontop container (temporary workaround)
 
 Currently, running the stack data uploader will create two additional ontop containers - `ontop-sgpostcode` and `ontop-timeseries`. If the stack is restarted, these two containers need to be manually spun up in order for federation to work.
 
