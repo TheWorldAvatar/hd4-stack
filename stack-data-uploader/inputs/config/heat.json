@@ -20,7 +20,7 @@
                     "exposure": "https://www.theworldavatar.com/kg/ontoexposure/",
                     "xsd": "http://www.w3.org/2001/XMLSchema#"
                 },
-                "triplePatterns": "?dataSubset rdfs:label 'UTCI'."
+                "triplePatterns": "?dataSubset rdfs:label 'UTCI (2019)'."
             }
         },
         {
