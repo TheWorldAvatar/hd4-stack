@@ -89,6 +89,73 @@
             ]
         },
         {
+            "name": "Heat index",
+            "expanded": true,
+            "search": {
+                "year": [
+                    2017,
+                    2018,
+                    2019,
+                    2020,
+                    2021,
+                    2022,
+                    2023,
+                    2024
+                ],
+                "month": [
+                    "January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December"
+                ],
+                "stat": [
+                    "mean",
+                    "max",
+                    "min"
+                ]
+            },
+            "sources": [
+                {
+                    "id": "heat-index-source",
+                    "type": "vector",
+                    "tiles": [
+                        "http://localhost:3838/geoserver/twa/wms?service=WMS&version=1.1.0&request=GetMap&layers=twa:heat_index_contour&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=application/vnd.mapbox-vector-tile"
+                    ]
+                }
+            ],
+            "layers": [
+                {
+                    "id": "heat-index-layer",
+                    "name": "Heat index",
+                    "source": "heat-index-source",
+                    "source-layer": "heat_index_contour",
+                    "type": "fill",
+                    "layout": {
+                        "visibility": "none"
+                    },
+                    "paint": {
+                        "fill-outline-color": [
+                            "get",
+                            "stroke"
+                        ],
+                        "fill-color": [
+                            "get",
+                            "fill"
+                        ],
+                        "fill-opacity": 0.5
+                    }
+                }
+            ]
+        },
+        {
             "name": "UTCI",
             "expanded": true,
             "search": {
@@ -148,6 +215,7 @@
         {
             "name": "GGVA",
             "expanded": true,
+            "stack": "http://localhost:3838/exposure-feature-info-agent/gvi",
             "sources": [
                 {
                     "id": "gvi-source",
