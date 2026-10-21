@@ -1,4 +1,5 @@
 {
     "folder": "for_batch_release",
-    "output_file": "processed/combined_data_release.csv"
+    "gad1_source_file": "for_batch_release/20260212_GGPA2_Greenspace NDVI_SGP Postal Code.csv",
+    "output_file": "processed/20261009_combined_data_release.csv"
 }
