@@ -2,6 +2,43 @@
     "name": "All Data",
     "groups": [
         {
+            "name": "Postcode",
+            "expanded": true,
+            "stack": "http://localhost:3838/exposure-feature-info-agent/sql",
+            "sources": [
+                {
+                    "id": "postcode-source",
+                    "type": "vector",
+                    "tiles": [
+                        "http://localhost:3838/geoserver/twa/wms?service=WMS&version=1.1.0&request=GetMap&layers=twa:sgpostcode&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=application/vnd.mapbox-vector-tile"
+                    ]
+                }
+            ],
+            "layers": [
+                {
+                    "id": "postcode-layer",
+                    "name": "Postcodes",
+                    "source": "postcode-source",
+                    "source-layer": "sgpostcode",
+                    "type": "circle",
+                    "layout": {
+                        "visibility": "none"
+                    },
+                    "paint": {
+                        "circle-color": "#000000",
+                        "circle-radius": 5,
+                        "circle-opacity": 0.8
+                    },
+                    "highlight": {
+                        "highlightFeatureId": "ogc_fid",
+                        "paint": {
+                            "circle-color": "red"
+                        }
+                    }
+                }
+            ]
+        },
+        {
             "name": "NDVI",
             "expanded": true,
             "search": {
@@ -109,38 +146,31 @@
             ]
         },
         {
-            "name": "Postcode",
+            "name": "GGVA",
             "expanded": true,
-            "stack": "http://localhost:3838/exposure-feature-info-agent/sql",
             "sources": [
                 {
-                    "id": "postcode-source",
+                    "id": "gvi-source",
                     "type": "vector",
                     "tiles": [
-                        "http://localhost:3838/geoserver/twa/wms?service=WMS&version=1.1.0&request=GetMap&layers=twa:sgpostcode&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=application/vnd.mapbox-vector-tile"
+                        "http://localhost:3838/geoserver/twa/wms?service=WMS&version=1.1.0&request=GetMap&layers=twa:gvi&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=application/vnd.mapbox-vector-tile"
                     ]
                 }
             ],
             "layers": [
                 {
-                    "id": "postcode-layer",
-                    "name": "Postcodes",
-                    "source": "postcode-source",
-                    "source-layer": "sgpostcode",
-                    "type": "circle",
+                    "id": "gvi-layer",
+                    "name": "GGVA",
+                    "source": "gvi-source",
+                    "source-layer": "gvi",
+                    "type": "fill",
                     "layout": {
                         "visibility": "none"
                     },
                     "paint": {
-                        "circle-color": "#000000",
-                        "circle-radius": 5,
-                        "circle-opacity": 0.8
-                    },
-                    "highlight": {
-                        "highlightFeatureId": "ogc_fid",
-                        "paint": {
-                            "circle-color": "red"
-                        }
+                        "fill-color": "#73c476",
+                        "fill-opacity": 0.5,
+                        "fill-outline-color": "#000000"
                     }
                 }
             ]
