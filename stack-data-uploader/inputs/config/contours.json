@@ -44,6 +44,26 @@
                     }
                 }
             }
+        },
+        {
+            "name": "heat_index_contour",
+            "skip": true,
+            "type": "vector",
+            "subdirectory": "heat_index_contour",
+            "ogr2ogrOptions": {
+                "sridIn": "EPSG:4326"
+            },
+            "geoServerSettings": {
+                "virtualTable": {
+                    "name": "heat_index_contour",
+                    "sql": "SELECT * FROM heat_index_contour",
+                    "geometry": {
+                        "name": "wkb_geometry",
+                        "type": "MultiPolygon",
+                        "srid": 4326
+                    }
+                }
+            }
         }
     ]
 }
