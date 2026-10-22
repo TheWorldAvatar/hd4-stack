@@ -9,12 +9,17 @@ import re
 
 # important assumption, year is extracted from the filename, e.g. ndvi_2023.tif
 
+BASE_DIR = Path(__file__).resolve().parent
 
-def main(raster_file):
+
+def main(raster_file, output_dir=BASE_DIR / "processed"):
     """
     This script reads in a TIF file and  converts it into polygons
     """
-    match = re.search(r"(19|20)\d{2}", str(raster_file))
+    raster_file = Path(raster_file)
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    match = re.search(r"(19|20)\d{2}", raster_file.name)
     year = int(match.group()) if match else None
 
     x_list = []
@@ -88,20 +93,21 @@ def main(raster_file):
         for feature in parsed_geojson.get("features", []):
             feature["properties"]["year"] = year
 
-        with open(f"processed/{raster_file.stem}.geojson", 'w') as f:
+        with (output_dir / f"{raster_file.stem}.geojson").open('w', encoding='utf-8') as f:
             json.dump(parsed_geojson, f)
     else:
         colorbar_filename = f"{raster_file.stem}_colorbar.png"
 
-        with open(f"processed/{raster_file.stem}.geojson", 'w') as f:
+        with (output_dir / f"{raster_file.stem}.geojson").open('w', encoding='utf-8') as f:
             f.write(geojsonstring)
 
-    plt.savefig(f"processed/{colorbar_filename}", bbox_inches='tight',
+    plt.savefig(output_dir / colorbar_filename, bbox_inches='tight',
                 transparent=True, dpi=300)
+    plt.close(ax.figure)
 
 
 if __name__ == "__main__":
-    folder = '../stack-data-uploader/inputs/data/ndvi/raster'
-    files = list(Path(folder).glob("*.tif"))
+    folder = BASE_DIR.parent / 'stack-data-uploader/inputs/data/ndvi/raster'
+    files = sorted(folder.glob("*.tif"))
     for file in files:
         main(file)

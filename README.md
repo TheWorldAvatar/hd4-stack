@@ -15,16 +15,44 @@ The following credential files are required in [stack-manager\inputs\secrets](st
 
 ## Contour generation (optional)
 
-A script is provided to generate GeoJSON contours of raster files for visualisation. The script reads from the folder [/stack-data-uploader/inputs/data/ndvi/raster/](/stack-data-uploader/inputs/data/ndvi/raster/).
-
-To use the script:
+Scripts are provided to generate GeoJSON contours of NDVI, UTCI, and heat index raster files for visualisation. Install the Python dependencies before running them:
 
 ```bash
-cd miscellaneous\ scripts/
-python generate_contour_from_tif.py
+python -m pip install rasterio numpy matplotlib geojsoncontour
 ```
 
-The GeoJSON files can be copied into [/stack-data-uploader/inputs/data/contours/raw_ndvi/](/stack-data-uploader/inputs/data/contours/raw_ndvi/) for upload.
+Place the input `.tif` files in the following folders. Output paths below are relative to `miscellaneous scripts/`.
+
+| Dataset | Script | Input folder | Default output folder |
+| ------- | ------ | ------------ | --------------------- |
+| NDVI | `generate_ndvi_contour.py` | `stack-data-uploader/inputs/data/ndvi/raster/` | `processed/` |
+| UTCI | `generate_utci_contour.py` | `stack-data-uploader/inputs/data/heat/utci/` | `processed/utci/` |
+| Heat index | `generate_heat_index_contour.py` | `stack-data-uploader/inputs/data/heat/heat_index/` | `processed/heat_index/` |
+
+Filename requirements:
+
+- NDVI: include a four-digit year, for example `ndvi_2023.tif`, to populate the `year` feature property.
+- UTCI: use `UTCI_4m_M<MM>_<Min|Mean|Max>.tif`, for example `UTCI_4m_M01_Mean.tif`. The month must have two digits.
+- Heat index: use `HI_<YYYY>_<MM>_monthly_average_daily_<min|mean|max>_<suffix>.tif`, for example `HI_2019_01_monthly_average_daily_max_station_input_approx_4m.tif`.
+
+Run the scripts from `miscellaneous scripts/`.
+
+```bash
+cd "miscellaneous scripts"
+python generate_ndvi_contour.py
+python generate_utci_contour.py
+python generate_heat_index_contour.py
+```
+
+Copy only the generated `.geojson` files into the corresponding upload folder:
+
+| Dataset | Upload folder / GeoServer layer name |
+| ------- | ----------------------------------- |
+| NDVI | [stack-data-uploader/inputs/data/contours/raw_ndvi/](stack-data-uploader/inputs/data/contours/raw_ndvi/) / `raw_ndvi` |
+| UTCI | [stack-data-uploader/inputs/data/contours/utci_contour/](stack-data-uploader/inputs/data/contours/utci_contour/) / `utci_contour` |
+| Heat index | [stack-data-uploader/inputs/data/contours/heat_index_contour/](stack-data-uploader/inputs/data/contours/heat_index_contour/) / `heat_index_contour` |
+
+In [contours.json](stack-data-uploader/inputs/config/contours.json), set `skip` to `false` for each subset to upload (all three are currently set to `true`). Ensure `contours` is included in `externalDatasets` in [hd4.json](stack-data-uploader/inputs/config/hd4.json), then run the stack data uploader as described in [Uploading data](#uploading-data).
 
 ## Setting up visualisation
 
@@ -69,7 +97,7 @@ Deprecated datasets:
 
 Timezone is uploaded as a datasubset of sgpostcode for the sake of performance of federated SPARQL queries, both datasubsets contain the predicate `geo:asWKT`. If multiple Ontop instances contain the same predicate in a query, query speeds will be affected.
 
-If visualisation of NDVI is desired, be sure to generate the necessary file in [Contour generation](#contour-generation-optional).
+For NDVI, UTCI, or heat index visualisation, generate and prepare the GeoJSON files as described in [Contour generation](#contour-generation-optional).
 
 ```bash
 cd stack-data-uploader
