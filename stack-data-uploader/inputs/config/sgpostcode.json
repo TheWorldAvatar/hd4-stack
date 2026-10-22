@@ -18,7 +18,8 @@
             "geoServerSettings": {
                 "virtualTable": {
                     "name": "postcodes",
-                    "sql": "SELECT * FROM sgpostcode",
+                    "sql": "SELECT ogc_fid AS id, * FROM sgpostcode",
+                    "keyColumn": "id",
                     "geometry": {
                         "name": "wkb_geometry",
                         "type": "Point",

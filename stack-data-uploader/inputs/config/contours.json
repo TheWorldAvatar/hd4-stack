@@ -12,17 +12,6 @@
             "subdirectory": "raw_ndvi",
             "ogr2ogrOptions": {
                 "sridIn": "EPSG:4326"
-            },
-            "geoServerSettings": {
-                "virtualTable": {
-                    "name": "raw_ndvi",
-                    "sql": "SELECT * FROM raw_ndvi",
-                    "geometry": {
-                        "name": "wkb_geometry",
-                        "type": "MultiPolygon",
-                        "srid": 4326
-                    }
-                }
             }
         },
         {
@@ -32,17 +21,6 @@
             "subdirectory": "utci_contour",
             "ogr2ogrOptions": {
                 "sridIn": "EPSG:4326"
-            },
-            "geoServerSettings": {
-                "virtualTable": {
-                    "name": "utci_contour",
-                    "sql": "SELECT * FROM utci_contour",
-                    "geometry": {
-                        "name": "wkb_geometry",
-                        "type": "MultiPolygon",
-                        "srid": 4326
-                    }
-                }
             }
         },
         {
@@ -52,17 +30,6 @@
             "subdirectory": "heat_index_contour",
             "ogr2ogrOptions": {
                 "sridIn": "EPSG:4326"
-            },
-            "geoServerSettings": {
-                "virtualTable": {
-                    "name": "heat_index_contour",
-                    "sql": "SELECT * FROM heat_index_contour",
-                    "geometry": {
-                        "name": "wkb_geometry",
-                        "type": "MultiPolygon",
-                        "srid": 4326
-                    }
-                }
             }
         }
     ]

@@ -10,17 +10,6 @@
             "type": "vector",
             "subdirectory": "polygons",
             "skip": false,
-            "geoServerSettings": {
-                "virtualTable": {
-                    "name": "parks_polygons",
-                    "sql": "SELECT * FROM parks_polygons",
-                    "geometry": {
-                        "name": "wkb_geometry",
-                        "type": "MultiPolygon",
-                        "srid": 4326
-                    }
-                }
-            },
             "additionalMetadata": {
                 "prefixes": {
                     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
@@ -47,17 +36,6 @@
                     ]
                 }
             },
-            "geoServerSettings": {
-                "virtualTable": {
-                    "name": "parks_2016",
-                    "sql": "SELECT * FROM parks_2016",
-                    "geometry": {
-                        "name": "wkb_geometry",
-                        "type": "MultiPolygon",
-                        "srid": 4326
-                    }
-                }
-            },
             "additionalMetadata": {
                 "prefixes": {
                     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
@@ -75,17 +53,6 @@
             "subdirectory": "parks_2019",
             "skip": false,
             "sql": "@/inputs/data/parks/sql/parks_2019.sql",
-            "geoServerSettings": {
-                "virtualTable": {
-                    "name": "parks_2019",
-                    "sql": "SELECT * FROM parks_2019",
-                    "geometry": {
-                        "name": "wkb_geometry",
-                        "type": "Polygon",
-                        "srid": 4326
-                    }
-                }
-            },
             "additionalMetadata": {
                 "prefixes": {
                     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
